@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valerio Puglisi - Data Scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            height: 100%;
+            position: relative;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px 0;
+        }
+        .carousel {
+            margin: 20px 0;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Valerio Puglisi</h1>
+        <p>Data Scientist</p>
+    </header>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Experienced Data Scientist with a demonstrated history of working in the industry. Skilled in Machine Learning, Data Analysis, and Statistical Modeling.</p>
+        </section>
+        <div class="carousel">
+            <!-- Slick Carousel for dividing sections -->
+            <div><img src="path_to_image" alt="Project 1"></div>
+            <div><img src="path_to_image" alt="Project 2"></div>
+            <div><img src="path_to_image" alt="Project 3"></div>
+        </div>
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>Developed predictive models that increased business efficiency by 30%. Implemented a real-time analytics dashboard for data visualization.</p>
+        </section>
+        <div class="carousel">
+            <!-- Another Slick Carousel for more content -->
+            <div><img src="path_to_image" alt="Certificate 1"></div>
+            <div><img src="path_to_image" alt="Certificate 2"></div>
+            <div><img src="path_to_image" alt="Certificate 3"></div>
+        </div>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: valerio.puglisi@example.com</p>
+        </section>
+    </div>
+    <footer>
+        <p>© 2023 Valerio Puglisi. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true
+            });
+        });
+    </script>
+</body>
+</html>
+
+
