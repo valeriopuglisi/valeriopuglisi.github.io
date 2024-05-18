@@ -62,8 +62,8 @@ footer {
  
 img.profile-pic {
     border-radius: 50%;
-    width: 80px; /* Resize to icon dimensions */
-    height: 80px; /* Resize to icon dimensions */
+    width: 10%; /* Resize to icon dimensions */
+    height: 10%; /* Resize to icon dimensions */
     position: relative; /* Fix position to header */
     left: 0%; /* Center horizontally */
     top: 10px; /* Position vertically centered in the header */
