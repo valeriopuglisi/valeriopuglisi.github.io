@@ -1,19 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- CANVAS PARTICLE SYSTEM ---
+
+    // --- MOBILE NAVIGATION ---
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = navToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // --- NEURAL PULSE ANIMATION (Layered Network) ---
     const canvas = document.getElementById('neural-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particlesArray;
+        let particlesArray = [];
+        let pulsesArray = []; // For the signal animation
 
         // Mouse interaction
         let mouse = {
             x: null,
             y: null,
-            radius: (canvas.height/80) * (canvas.width/80)
+            radius: 150
         }
 
         window.addEventListener('mousemove', (event) => {
@@ -21,213 +41,210 @@ document.addEventListener('DOMContentLoaded', () => {
             mouse.y = event.y;
         });
 
-        // Particle Class
         class Particle {
-            constructor(x, y, loading_speed, size, color) {
+            constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.directionX = (Math.random() * 2) - 0.5;
-                this.directionY = (Math.random() * 2) - 0.5;
-                this.size = size;
-                this.color = color;
+                this.size = Math.random() * 2 + 1;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                // Layered colors
+                this.color = Math.random() > 0.5 ? '#2dd4bf' : '#818cf8';
+
+                // Connection neighbors
+                this.neighbors = [];
             }
 
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
                 ctx.fillStyle = this.color;
                 ctx.fill();
             }
 
             update() {
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-
-                // Check collision detection - mouse position / particle position
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
-                
-                if (distance < mouse.radius + this.size){
-                    if(mouse.x < this.x && this.x < canvas.width - this.size * 10){
-                        this.x += 1;
-                    } 
-                    if (mouse.x > this.x && this.x > this.size * 10){
-                        this.x -= 1;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = mouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
+                if (distance < mouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+
+                    // Trigger pulse if close to mouse
+                    if (Math.random() < 0.02) {
+                        firePulse(this);
                     }
-                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10){
-                        this.y += 1;
-                    } 
-                    if (mouse.y > this.y && this.y > this.size * 10){
-                        this.y -= 1;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx / 30; // Return speed
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy / 30;
                     }
                 }
-                
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
+            }
+        }
+
+        // Pulse signal travelling between nodes
+        class Pulse {
+            constructor(startNode, endNode) {
+                this.startNode = startNode;
+                this.endNode = endNode;
+                this.progress = 0;
+                this.speed = 0.05;
+                this.dead = false;
+            }
+
+            update() {
+                this.progress += this.speed;
+                if (this.progress >= 1) {
+                    this.dead = true;
+                    // Chance to propagate
+                    if (Math.random() < 0.3) {
+                        firePulse(this.endNode);
+                    }
+                }
+            }
+
+            draw() {
+                let x = this.startNode.x + (this.endNode.x - this.startNode.x) * this.progress;
+                let y = this.startNode.y + (this.endNode.y - this.startNode.y) * this.progress;
+
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = '#fff';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#fff';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function firePulse(node) {
+            // Find a random neighbor to fire to
+            if (node.neighbors.length > 0) {
+                let target = node.neighbors[Math.floor(Math.random() * node.neighbors.length)];
+                pulsesArray.push(new Pulse(node, target));
             }
         }
 
         function init() {
             particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i=0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-                let color = Math.random() > 0.5 ? '#66fcf1' : '#bd00ff'; // Cyan or Purple
-                
-                particlesArray.push(new Particle(x, y, 1, size, color));
+            let numberOfParticles = (canvas.width * canvas.height) / 8000;
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                particlesArray.push(new Particle(x, y));
+            }
+
+            // Pre-calculate neighbors for performance
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) +
+                        ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    if (distance < 150 * 150) { // Connection threshold
+                        particlesArray[a].neighbors.push(particlesArray[b]);
+                        particlesArray[b].neighbors.push(particlesArray[a]);
+                    }
+                }
             }
         }
 
         function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0,0,innerWidth, innerHeight);
-            
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        function connect() {
-            let opacityValue = 1;
+            // Draw connections first
             for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        let pColor = particlesArray[a].color;
-                        
-                        ctx.strokeStyle = pColor === '#66fcf1' ? `rgba(102, 252, 241, ${opacityValue})` : `rgba(189, 0, 255, ${opacityValue})`;
-                        ctx.lineWidth = 1;
+                let p = particlesArray[a];
+                for (let b = 0; b < p.neighbors.length; b++) {
+                    let neighbor = p.neighbors[b];
+                    // Draw line only once (canonical order)
+                    if (p.x < neighbor.x) {
                         ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(neighbor.x, neighbor.y);
                         ctx.stroke();
                     }
                 }
+                p.update();
+                p.draw();
             }
+
+            // Draw pulses
+            for (let i = 0; i < pulsesArray.length; i++) {
+                pulsesArray[i].update();
+                pulsesArray[i].draw();
+            }
+            // Remove dead pulses
+            pulsesArray = pulsesArray.filter(p => !p.dead);
+
+            // Random background pulses
+            if (Math.random() < 0.05) {
+                let randomNode = particlesArray[Math.floor(Math.random() * particlesArray.length)];
+                firePulse(randomNode);
+            }
+
+            requestAnimationFrame(animate);
         }
 
         init();
         animate();
 
         window.addEventListener('resize', () => {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            mouse.radius = ((canvas.height/80) * (canvas.height/80));
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             init();
         });
     }
 
-    // --- TYPEWRITER EFFECT ---
+    // --- TYPEWRITER EFFECT (Only on landing) ---
     const typingElement = document.getElementById('typing-text');
-    const texts = ["INITIALIZING SYSTEM...", "LOADING MODULES...", "ACCESS GRANTED."];
-    let textIndex = 0;
-    let charIndex = 0;
-    
-    // We can just type one phrase or rotate. Let's type a welcome message or rotate roles.
-    // For this design, let's type one static complex message or rotate roles.
-    const roles = ["Neural Architect", "Data Scientist", "Deep Learning Engineer"];
-    
-    function typeWriter() {
-        if (textIndex < roles.length) {
-            if (charIndex < roles[textIndex].length) {
-                if(!typingElement.innerHTML.endsWith(' ')) typingElement.innerHTML += roles[textIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 100);
+    if (typingElement) {
+        const roles = ["Generative AI Systems.", "Agentic Workflows.", "RAG Architectures.", "Computer Vision Pipelines."];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
             } else {
-                setTimeout(eraseText, 2000);
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
             }
-        } else {
-            textIndex = 0;
-            setTimeout(typeWriter, 100);
-        }
-    }
 
-    function eraseText() {
-        if (charIndex > 0) {
-            typingElement.innerHTML = roles[textIndex].substring(0, charIndex-1);
-            charIndex--;
-            setTimeout(eraseText, 50);
-        } else {
-            textIndex++;
-            setTimeout(typeWriter, 500);
-        }
-    }
-
-    // Start typing if element exists
-    if(typingElement) {
-        // typeWriter(); 
-        // Simple typewriter for the sub text: 
-        // Actually, let's just do a simple "System Online" sequence for the banner
-        let systemMsg = "SYSTEM STATUS: ONLINE. WELCOME, USER.";
-        let i = 0;
-        function typeSysMsg() {
-            if (i < systemMsg.length) {
-                typingElement.innerHTML += systemMsg.charAt(i);
-                i++;
-                setTimeout(typeSysMsg, 50);
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
             }
-        }
-        typeSysMsg();
-    }
 
-    // --- SCROLL OBSERVER ---
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    const sections = document.querySelectorAll('.terminal-section');
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // --- TABS (Publications/Projects) ---
-    window.openTab = function(tabName) {
-        var i;
-        var x = document.getElementsByClassName("tab-content");
-        var tabs = document.getElementsByClassName("tab-btn");
-        
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-            x[i].classList.remove('active');
+            setTimeout(typeEffect, typeSpeed);
         }
-        
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].classList.remove("active");
-        }
-        
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add('active');
-        
-        // Find the button that called this and set active
-        // Simplest is to just set 'active' on the clicked button, passed as event or just finding by text.
-        // We'll iterate to match index or ID. 
-        // For simplicity in this script, we assume the buttons have IDs or we just toggle based on event.
-        // But since we use onclick="openTab('pubs')", we need to query the buttons to highlight correct one.
-        if(tabName === 'pubs') {
-            tabs[0].classList.add("active");
-        } else {
-            tabs[1].classList.add("active");
-        }
+        setTimeout(typeEffect, 1000);
     }
 
 });

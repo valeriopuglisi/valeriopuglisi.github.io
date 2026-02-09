@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Valerio Puglisi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+
+<body>
+    <canvas id="neural-canvas"></canvas>
+
+    <nav class="navbar gloss">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-symbol">VP_</span><span class="logo-text">AI.ARCHITECT</span>
+            </a>
+            <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="about.html" class="nav-link">01. About</a></li>
+                <li><a href="experience.html" class="nav-link active">02. Experience</a></li>
+                <li><a href="projects.html" class="nav-link">03. Projects</a></li>
+                <li><a href="blog/index.html" class="nav-link">04. Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link btn-primary">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="hero-title fade-in-up">Professional Journey.</h1>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="timeline fade-in-up delay-1">
+                    <!-- Job 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="job-header">
+                                <h3 class="job-title">Senior ML Engineer (Remote)</h3>
+                                <span class="job-company">@ Hlpy</span>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-date">2024 – Present</span>
+                                <span class="job-location"><i class="fas fa-map-marker-alt"></i> Milan/Remote</span>
+                            </div>
+                            <ul class="job-desc">
+                                <li>Designed & deployed <strong>Graph-RAG</strong> systems for multilingual customer
+                                    support using <strong>LangGraph</strong>, <strong>FastAPI</strong>, and
+                                    <strong>PGVector</strong>.</li>
+                                <li>Built automated evaluation pipelines using <strong>RAGAS</strong> to measure
+                                    faithfulness and relevance.</li>
+                                <li>Developed multi-agent systems with <strong>ElevenLabs</strong> for conversational
+                                    AI.</li>
+                                <li>Orchestrated data ingestion pipelines with <strong>Airflow</strong> (SharePoint
+                                    syncing, PDF preprocessing).</li>
+                            </ul>
+                            <div class="job-tags">
+                                <span>LangGraph</span><span>PGVector</span><span>FastAPI</span><span>Airflow</span><span>OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="job-header">
+                                <h3 class="job-title">Computer Architecture Lecturer</h3>
+                                <span class="job-company">@ Epicode</span>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-date">2024</span>
+                                <span class="job-location"><i class="fas fa-laptop"></i> Remote</span>
+                            </div>
+                            <ul class="job-desc">
+                                <li>Delivered comprehensive lectures on computer architecture and systems to aspiring
+                                    engineers.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="job-header">
+                                <h3 class="job-title">Deep Learning Engineer Consultant</h3>
+                                <span class="job-company">@ University of Catania</span>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-date">Jan 2024 – Jun 2024</span>
+                                <span class="job-location"><i class="fas fa-university"></i> Catania, Italy</span>
+                            </div>
+                            <ul class="job-desc">
+                                <li>Developed <strong>SOTA Object Detection</strong> (YOLOv8, DINO) and Tracking
+                                    (DeepSORT) models for cattle monitoring.</li>
+                                <li>Implemented noise-robust audio classifiers for environmental monitoring.</li>
+                            </ul>
+                            <div class="job-tags">
+                                <span>PyTorch</span><span>YOLOv8</span><span>Computer Vision</span><span>Audio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="job-header">
+                                <h3 class="job-title">ML & Deep Learning Engineer Consultant</h3>
+                                <span class="job-company">@ Vicosystems S.r.l.</span>
+                            </div>
+                            <div class="job-meta">
+                                <span class="job-date">2021 – 2023</span>
+                                <span class="job-location"><i class="fas fa-industry"></i> Catania, Italy</span>
+                            </div>
+                            <ul class="job-desc">
+                                <li>Designed a Multimodal DL platform for <strong>Predictive Maintenance</strong> on
+                                    time-series data.</li>
+                                <li>Utilized <strong>CTGAN</strong> for synthetic data generation in industrial
+                                    contexts.</li>
+                            </ul>
+                            <div class="job-tags">
+                                <span>TensorFlow</span><span>Predictive Maintenance</span><span>Generative AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Download Block -->
+                <div class="center-text fade-in-up delay-2" style="margin-top: 4rem;">
+                    <a href="assets/docs/Resume_Valerio_Francesco_Puglisi_08_2025.pdf" target="_blank"
+                        class="btn btn-outline big">
+                        <i class="fas fa-file-pdf"></i> Download Full Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Designed & Built by Valerio Francesco Puglisi</p>
+        <p class="copyright">© 2025 ALL RIGHTS RESERVED - AI.ARCHITECT v3.0</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

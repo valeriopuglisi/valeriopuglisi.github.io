@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects & Research | Valerio Puglisi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+
+<body>
+    <canvas id="neural-canvas"></canvas>
+
+    <nav class="navbar gloss">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-symbol">VP_</span><span class="logo-text">AI.ARCHITECT</span>
+            </a>
+            <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="about.html" class="nav-link">01. About</a></li>
+                <li><a href="experience.html" class="nav-link">02. Experience</a></li>
+                <li><a href="projects.html" class="nav-link active">03. Projects</a></li>
+                <li><a href="blog/index.html" class="nav-link">04. Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link btn-primary">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="hero-title fade-in-up">Work & Research.</h1>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="projects-grid fade-in-up delay-1">
+                    <!-- Project 1 -->
+                    <div class="project-card glass-card">
+                        <div class="project-top">
+                            <i class="fas fa-book-open project-icon"></i>
+                            <div class="project-links">
+                                <a href="https://scholar.google.com/citations?user=E0sPqWcAAAAJ&hl=en"
+                                    target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Deep Audio Analyzer</h3>
+                        <p class="project-desc">
+                            A Framework to Industrialize the Research on Audio Forensics. Published in IEEE MetroXRAINE
+                            (2023).
+                            Focuses on scalable audio analysis pipelines.
+                        </p>
+                        <div class="project-tags">
+                            <span>Audio Forensics</span><span>Deep Learning</span><span>IEEE</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass-card">
+                        <div class="project-top">
+                            <i class="fas fa-cow project-icon"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Cattle Behavior Recognition</h3>
+                        <p class="project-desc">
+                            Computer Vision system for tracking and behavior analysis of dairy cows using CNNs and
+                            Tracking algorithms.
+                            Published in IEEE IoTaIS (2022).
+                        </p>
+                        <div class="project-tags">
+                            <span>Computer Vision</span><span>Tracking</span><span>Object Detection</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card glass-card">
+                        <div class="project-top">
+                            <i class="fas fa-cloud-showers-heavy project-icon"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Rainfall Estimation AI</h3>
+                        <p class="project-desc">
+                            CNN-based Audio Sensor for accurate Rainfall Estimation. Demonstrating the use of audio
+                            features for environmental sensing.
+                            (IEEE IDAACS 2021).
+                        </p>
+                        <div class="project-tags">
+                            <span>Audio AI</span><span>CNN</span><span>Environmental Data</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="show-more-container fade-in-up delay-2">
+                    <a href="https://scholar.google.com/citations?user=E0sPqWcAAAAJ&hl=en"
+                        class="btn btn-outline small">View All Publications</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Stack Reuse -->
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="section-number">//</span> Technical Stack</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="skills-wrapper fade-in-up delay-3">
+                    <div class="skill-category glass-card">
+                        <h3 class="skill-title"><i class="fas fa-robot"></i> Agentic AI & LLMs</h3>
+                        <div class="skill-tags">
+                            <span class="tag">LangGraph</span>
+                            <span class="tag">RAG Systems</span>
+                            <span class="tag">OpenAI API</span>
+                            <span class="tag">Agno</span>
+                            <span class="tag">Prompt Engineering</span>
+                            <span class="tag">RAGAS Eval</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category glass-card">
+                        <h3 class="skill-title"><i class="fas fa-database"></i> Data & Search</h3>
+                        <div class="skill-tags">
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">PGVector</span>
+                            <span class="tag">FAISS</span>
+                            <span class="tag">ElasticSearch</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Redis</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category glass-card">
+                        <h3 class="skill-title"><i class="fas fa-server"></i> MLOps & Backend</h3>
+                        <div class="skill-tags">
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">Airflow</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">GitLab CI/CD</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category glass-card">
+                        <h3 class="skill-title"><i class="fas fa-brain"></i> Core ML/DL</h3>
+                        <div class="skill-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">HuggingFace</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Audio Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Designed & Built by Valerio Francesco Puglisi</p>
+        <p class="copyright">© 2025 ALL RIGHTS RESERVED - AI.ARCHITECT v3.0</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
