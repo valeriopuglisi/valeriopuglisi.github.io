@@ -1,0 +1,41 @@
+Here is the comprehensive overview of Google Antigravity in English, incorporating the specific answers regarding Skills MD, Google Sheets integration, and the Agent Manager.
+
+### What is Google Antigravity?
+
+**Google Antigravity** is an "agent-first" Integrated Development Environment (IDE) launched in late 2025. It represents a significant shift from traditional AI "copilots" (which simply autocomplete code) to a platform designed to manage **autonomous AI agents**. Built on a fork of Visual Studio Code, it is powered by the **Gemini 3** model family (Pro, Deep Think, and Flash) and marks Sergey Brin's return to active product development at Google.
+
+The core philosophy of Antigravity is to transform the developer from a code writer into a "Mission Control" operator who orchestrates AI agents to plan, execute, and verify complex engineering tasks.
+
+---
+
+### Key Features & Innovations
+
+#### 1. Configuration of Skills MD for Specific Tasks
+Antigravity solves the problem of "context window overload" through **Skills**. Instead of dumping every company rule into the AI's context, Skills allow for "progressive disclosure"—loading specific knowledge only when needed.
+
+*   **Structure:** A Skill is a directory (either global or workspace-specific) containing a `SKILL.md` file.
+*   **Configuration:** The `SKILL.md` file contains **YAML metadata** (name and description) at the top, followed by Markdown instructions.
+    *   *Example:* You can create a "Security Audit" skill. When you ask the agent to "check this code for vulnerabilities," the system matches your intent to the skill's description and loads the specific security checklist from the Markdown file into the agent's memory.
+*   **Resources:** Skills can also reference static files (like a `HEADER.txt` for license templates) stored in a `resources` subdirectory, which the agent reads and applies only when the specific skill is triggered.
+
+#### 2. Advantages of Integration with Google Sheets
+Because Antigravity includes a **Browser Agent** capable of navigating the web via a headless Chrome instance, it can interact directly with web applications like Google Sheets.
+
+*   **"Hands-Free" Manipulation:** The agent can automate manual data entry, row updates, and data cleaning directly within the Sheets interface without requiring complex API setups.
+*   **Visual Verification:** The agent can navigate the UI, click cells, input data, and verify the results visually, bridging the gap between coding and administrative workflows.
+*   **Zero-Cost Automation:** This setup allows users to automate repetitive spreadsheet tasks using the agent's browser capabilities, often available within the free tier of the IDE.
+
+#### 3. How the Agent Manager Coordinates Multiple Agents
+The **Agent Manager** (often called "Mission Control") is a dedicated interface separate from the code editor that allows for **asynchronous, multi-agent orchestration**.
+
+*   **The "Architect" Role:** The developer acts as an architect, assigning high-level goals (e.g., "Refactor the auth module" or "Write documentation").
+*   **Parallel Execution:** Unlike a linear chat, the Agent Manager can spawn multiple agent instances to work on different tasks simultaneously. You could have one agent fixing a bug in the backend while another agent updates the CSS in the frontend, multiplying productivity.
+*   **Role Specialization:** Users can define specific "personas" for agents within a workflow. For example, in a creative writing or documentation context, the Manager can coordinate a "Researcher" (checking facts), an "Auditor" (checking consistency), and a "Writer" (generating content) all working in parallel on different files.
+*   **State Tracking:** The Manager view provides a dashboard showing the status of each agent, the **Artifacts** they have produced (plans, diffs, walkthroughs), and any pending requests for human approval.
+
+### Summary of Operating Modes
+
+Antigravity operates in two distinct modes to balance speed and quality:
+
+*   **Planning Mode:** The agent "thinks" before acting. It generates **Artifacts**—such as Implementation Plans and Task Lists—which the user reviews and approves before any code is written. This is ideal for complex architectural changes.
+*   **Fast Mode:** The agent executes commands immediately based on the context. This is designed for quick, low-risk tasks like renaming variables or running terminal commands.
