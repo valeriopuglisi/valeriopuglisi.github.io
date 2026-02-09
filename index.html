@@ -1,245 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valerio Francesco Puglisi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
-    <link rel="stylesheet" href="./style.css">
-    
+    <title>Valerio Puglisi | Neural Architect</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <header>
-        <!-- <img src="./assets/img/VFP.jpg" alt="Valerio Francesco Puglisi" class="profile-pic"> -->
-        <h1>Valerio Francesco Puglisi</h1>
-        <p>Ph.D. Computer Scientist | Data Scientist Consultant</p>
-        
-        <!-- <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#work-experience">Work Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <canvas id="neural-canvas"></canvas>
+    <div class="scanline"></div>
+
+    <div class="app-container">
+
+        <!-- Sidebar / Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="bracket">[</span>VP<span class="bracket">]</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about" class="active"><i class="fas fa-user-astronaut"></i> <span
+                            class="link-text">IDENTITY</span></a></li>
+                <li><a href="#skills"><i class="fas fa-microchip"></i> <span class="link-text">MODULES</span></a></li>
+                <li><a href="#experience"><i class="fas fa-stream"></i> <span class="link-text">LOGS</span></a></li>
+                <li><a href="#projects"><i class="fas fa-project-diagram"></i> <span
+                            class="link-text">PROTOCOLS</span></a></li>
+                <li><a href="#publications"><i class="fas fa-book-journal-whills"></i> <span
+                            class="link-text">ARCHIVES</span></a></li>
+                <li><a href="#contact"><i class="fas fa-satellite-dish"></i> <span class="link-text">COMMS</span></a>
+                </li>
             </ul>
-        </nav> -->
-    </header>
-    
-    <div class="container">
-        <section id="contacts">
-            <h2>Contacts</h2>
-            <p>Email: <a href="mailto:valeriopuglisi.vp@gmail.com">valeriopuglisi.vp@gmail.com</a>. Connect with me on <a href="https://www.linkedin.com/in/valerio-francesco-puglisi/?locale=en_US">Linkedin</a> or view my research on <a href="https://scholar.google.com/citations?user=E0sPqWcAAAAJ&hl=en">Scholar</a>.</p>
-        </section>
-
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Enthusiastically diving into the worlds of LLM, Computer Vision, and Audio—because why not mix a little fun with science?</p>
-            
-
-            <p>Experienced Data Scientist with a demonstrated history of working in the industry. Skilled in Machine Learning, Data Analysis, and Statistical Modeling.</p>
-        </section>
-        
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li><strong>Programming Languages:</strong> Python, C, Java, Javascript, TypeScript, Bash.</li>
-                <li><strong>Data manipulation:</strong> Pandas, SQL (MySQL, MariaDB), NoSQL (MongoDB), PL-SQL(Oracle)</li>
-                <li><strong>Machine & Deep Learning:</strong> Scikit-learn, PyTorch, Tensorflow, Tensorflow-Lite, TensorBoard, Gradio, Keras, HuggingFace, Numpy.</li>
-                <li><strong>Data Visualization:</strong> Matplotlib, Seaborn, Plotly.</li>
-                <li><strong>Generative AI:</strong> LangChain + ChatGPT + LLama (Ollama).</li>
-                <li><strong>Deep Learning / Computer Vision:</strong> TorchVision, Ultralytics, OpenCV.</li>
-                <li><strong>Deep Learning / Audio Analysis:</strong> TorchAudio, Librosa, PyRoomAcoustics.</li>
-                <li><strong>Scraping:</strong> BeautifulSoup, Selenium.</li>
-                <li><strong>Frontend Programming:</strong> Angular, Vue.js, HTML, CSS, Bootstrap.</li>
-                <li><strong>Backend Programming:</strong> Java SpringBoot, Flask, Django.</li>
-                <li><strong>Control Version System:</strong> Git, Subversion, Bitbucket, Sourcetree, RTC (IBM)</li>
-                <li><strong>IDE and Editor:</strong> CursorAI, Visual Studio Code, Intellij, WebStorm, PyCharm, Clion, PhpStorm, Vi/Vim</li>
-                <li><strong>Operating System:</strong> Linux, Mac, Windows.</li>
-                <li><strong>Security tools:</strong> Shodan, Recon-ng, Wireshark, Nmap, Venom</li>
-            </ul>
-        </section>
-        
-        <section id="work-experience">
-            <h2>Work Experience</h2>
-            <ol>
-                <li>
-                    <strong>University of Catania: Department of Engineering</strong> - <a href="https://www.dieei.unict.it/en">https://www.dieei.unict.it/en</a><br>
-                    <em>Deep Learning Engineer Consultant, Catania, Italy (01/2024 - 06/2024)</em>
-                    <ul>
-                        <li>Working with Ferrari on a Data Science Project.</li>
-                        <li>Developing State Of The Art Object Detection like YoloV8, DINO, DiffusionDet, RTMDet and CO-DETR and Object Tracking with Deep Sort, Byte Track and Supervision.</li>
-                        <li>Working on Data Visualization Algorithms like PCA and T-SNE.</li>
-                        <li>Data Cleaning and Data Synthesis via Generative models (GAN).</li>
-                        <li>Developing Audio Classifiers with noise robustness for the environment.</li>
-                        <li>Writing scientific papers on research results for IEEE and MDPI research community.</li>
-                        <li>Skills: GitLab · OpenMMLab · Computer Vision · Object Detection · Object Tracking · Deep Learning · PyTorch · Python</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>ParkSmart s.r.l.</strong> - <a href="http://www.parksmart.it">http://www.parksmart.it</a><br>
-                    <em>Deep Learning Engineer Consultant, Catania, Italy (06/2023 - 12/2023)</em>
-                    <ul>
-                        <li>I developed NVIDIA DeepStream custom pipelines with Python Bindings for Computer Vision.</li>
-                        <li>Pipelines were composed including Gst-nvtracker (that runs with YOLOV8), Gst-nvtracker (DeepSort, ..) and Gst-nvdsanalytics applied on real-time tasks.</li>
-                        <li>Test accuracy performance between YOLOV8 native and DeepStream Implementation.</li>
-                        <li>Skills: Deep Learning · Python · PyTorch · JIRA · NVIDIA DeepStream</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Vicosystems s.r.l.</strong> - <a href="http://www.vicosystems.it">http://www.vicosystems.it</a><br>
-                    <em>Machine Learning & Deep Learning Engineer Consultant, Catania, Italy (03/2021 - 06/2023)</em>
-                    <ul>
-                        <li>Designed and developed Unsupervised Predictive Maintenance System via Deep Learning Anomaly Detection models for Smart Industries context with Multivariate Time Series inputs from sensors for the SMILE project sponsored by PON/FESR.</li>
-                        <li>I am creating a multimodal deep learning system capable of performing the classification task in the audio field.</li>
-                        <li>This approach involves the use of different neural networks used in a combined way and nowadays it is widely used as it makes the system robust against possible loss of input data of a neural network.</li>
-                        <li>Developed Frontend WebApp for the SmartRoad4.0 project sponsored by PON/FESR.</li>
-                        <li>Skills: Python, Pytorch, Tensorflow, Tensorflow Lite, ONNX, Keras, Numpy, Pandas, and Librosa, Angular12, Angular Material, RxJS, Socket.io,.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Paycasso LTD</strong> - <a href="www.xydus.com">www.xydus.com</a><br>
-                    <em>Full Stack Developer & Machine Learning Engineer Consultant, Remote, London (10/2020 – 03/2021)</em>
-                    <ul>
-                        <li>Full stack microservices web application development.</li>
-                        <li>Developed Backend application of Paycasso Image Labeler Web Application.</li>
-                        <li>Developed Frontend application of Paycassoo Image Labeler Web Application.</li>
-                        <li>Deploying microservices web application with Docker and Docker Compose.</li>
-                        <li>Skills: Vue.js · Vuetify · Typescript · Axios · Java SpringBoot · Kafka · Maven · Hibernate · AWS · Java SDK · Protobuf · Docker.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Reply s.r.l.</strong> - <a href="www.reply.com">www.reply.com</a><br>
-                    <em>Full Stack Developer & Software analyst, Reply Cluster Financial Services, Milan, Italy (10/2019 -10/2020)</em>
-                    <ul>
-                        <li>Developer and software analyst using Full Stack technologies for Intesa Sanpaolo Bank’s web applications.</li>
-                        <li>Research with R&D group on Fintech and Banking for automatisation of economy customer model with Earnix.</li>
-                        <li>Skills: Angular · Java · SpringBoot · Maven · SQL · PL-SQL· Bash Script Programming · GIT · Access2016.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Vicosystems s.r.l.</strong> - <a href="http://www.vicosystems.it">http://www.vicosystems.it</a><br>
-                    <em>Machine Learning Engineer & Full Stack Developer, Catania, Italy (02/2019 -10/2019)</em>
-                    <ul>
-                        <li>Created Labeling Tool for Machine Learning Projects.</li>
-                        <li>Developed an audio system for rainfall classification. Convolutional neural networks for audio classification of rainfall, processing audio signal as a 2D signal with Pytorch, PyAudio, Numpy, Pandas, RaspberryPI mod 3B+, Amazon Web Services.</li>
-                        <li>Developed Deep Learning infrastructure in projects supported by the European Community (EIC): A smart monitoring health system for cattle with OpenCV and Darknet in Python.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Streaming Engineer & Full Stack Developer</strong>, Catania, Italy (01/2018 -12/2018)
-                    <ul>
-                        <li>Developed remote assistance software that allows any operator equipped with a RaspberryPy (with integrated camera and a Bluetooth earpiece) to communicate with the relative technician in case of remote assistance, by creating virtual audio/video rooms based on the WebRTC protocol.</li>
-                        <li>Implemented a client for the operator on Raspberry 3B+. Configured and implemented different mods of Janus WebRTC Gateway. Implemented a web client for technicians.</li>
-                        <li>Made with these technologies: HTML, Javascript, Jquery, Bash scripting, Linux Procedure, Nginx, Janus Gateway.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Full Stack Developer</strong>, Catania, Italy (09/2016 -10/2018)
-                    <ul>
-                        <li>Developed a search engine (VSearch - www.vsearch.it) for internet contacts recovery. This project is developed on the back-end side in Python through the Flask and Celery framework and is based on web scraping and crawling techniques. Regarding the front-end side, the technologies used are Jinja2, Html5, Bootstrap, CSS, Javascript, Jquery, and AngularJs.</li>
-                    </ul>
-                </li>
-            </ol>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div>
-                <h3>PhD in Computer Science: Machine Learning & Deep Learning</h3>
-                <p><strong>Università degli Studi di Catania</strong> - <a href="http://web.dmi.unict.it/">http://web.dmi.unict.it/</a><br>
-                Catania, Italy (10/2020 - 10/2023)</p>
-                <ul>
-                    <li>Thesis: <a href="https://scholar.google.com/citations?user=E0sPqWcAAAAJ&hl=en#:~:text=Audio%20Analysis%20via%20Deep%20Learning%20for%20Forensics%20and%20Investigation%20Purposes">Audio Analysis via Deep Learning for Forensics and Investigation Purposes</a></li>
-                    <li>The proposed research activity aims to operate on the state of the art in order to identify and improve techniques like Automatic Speech Recognition and Speech Separation.</li>
-                    <li>The project included a period of study abroad at the research group of Dr Salvatore Livatino, University of Hertfordshire, UK and a period of study at the company iCTLab s.r.l. (<a href="https://www.ictlab.srl/">https://www.ictlab.srl/</a>) a spinoff of the University of Catania specialized in digital investigations that over the years has developed know-how on the current issue.</li>
-                </ul>
+            <div class="system-status">
+                <div class="status-item">
+                    <span class="label">OS:</span> <span class="value">MAC.OS.X</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">STATUS:</span> <span class="value text-success">ONLINE</span>
+                </div>
             </div>
-            <div>
-                <h3>Master’s Degree (MS) in Computer Science: Security & Artificial Intelligence</h3>
-                <p><strong>Università degli Studi di Catania</strong> - <a href="http://web.dmi.unict.it/">http://web.dmi.unict.it/</a><br>
-                Catania, Italy (10/2015 - 09/2019)</p>
-                <ul>
-                    <li>Thesis: Smart Mirror, a dissertation on the development of a software system able to predict clothing comfort relatively to the weather.</li>
-                    <li>Final degree mark: 110/110</li>
-                    <li>Coursework: Artificial Intelligence, Computer and Network Security, Cryptography, P2P Networks, Distributed Systems, Numerical analysis, Optimization, Machine Learning and Deep Learning.</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Bachelor’s Degree (BS) in Computer Science</h3>
-                <p><strong>Università degli Studi di Catania</strong> - <a href="http://web.dmi.unict.it/">http://web.dmi.unict.it/</a><br>
-                Catania, Italy (09/2011 - 03/2016)</p>
-                <ul>
-                    <li>Thesis: A client-server system of wavelet cryptography</li>
-                    <li>Final degree mark: 100/110</li>
-                    <li>Coursework: Algorithms and Data Structure, Computer Architecture, Computer Networks, Databases, Distributed Programming, Imperative and Object Oriented Programming, Multimedia and Image Processing, Network Security, Operating System, Software Engineering.</li>
-                </ul>
-            </div>
-            <div>
-                <h3>High School Diploma in Electronics</h3>
-                <p><strong>Guglielmo Marconi</strong><br>
-                Catania, Italy (09/2006 - 07/2011)</p>
-                <ul>
-                    <li>Thesis: Derivational AmpOp (Operational Amplifiers)</li>
-                    <li>Final diploma mark: 85/100</li>
-                </ul>
-            </div>
-        </section>
+        </nav>
 
-    <section id="publications">
-        <h2>Publications</h2>
-        <ol>
-            <li>
-                <p><strong>Conference:</strong> A Convolutional Neural Networks Approach to Audio Classification for Rainfall Estimation.</p>
-                <p>2019 10th IEEE International Conference on Intelligent Data Acquisition and Advanced Computing Systems. September 2019, Technology and Applications (IDAACS), Francesco Beritelli's Lab: Roberta Avanzato, Francesco Beritelli, Francesco Di Franco, Valerio Puglisi. <strong>DOI:</strong> 10.1109/IDAACS.2019.8924399</p>
-            </li>
-            <li>
-                <p><strong>Conference:</strong> A CNN-based Audio Sensor for Rainfall Estimation: Implementation on Embedded Board.</p>
-                <p>The 11th IEEE International Conference on Intelligent Data Acquisition and Advanced Computing Systems: Technology and Applications 22-25 September 2021, Cracow, Poland. Michele Russo, Valerio Francesco Puglisi, Roberta Avanzato, Francesco Beritelli.</p>
-            </li>
-            <li>
-                <p><strong>Conference:</strong> Dairy Cow Behavior Recognition Using Computer Vision Techniques and CNN Networks.</p>
-                <p>The 2022 IEEE conference on Internet of Things and Intelligent Systems (IoTaIS) - Bali, Indonesia · Nov 24, 2022: Lab: Francesco Beritelli's Lab: Roberta Avanzato, Francesco Beritelli, Francesco Di Franco, Valerio Puglisi.</p>
-            </li>
-            <li>
-                <p><strong>Conference:</strong> Deep Audio Analyzer: A Framework to Industrialize the Research on Audio Forensics.</p>
-                <p>The 2023 IEEE International Conference on Metrology for eXtended Reality, Artificial Intelligence and Neural Engineering - IEEE MetroXRAINE 2023 – Milan, Italy · Oct 25-27, 2023: Lab: Valerio Francesco Puglisi, Oliver Giudice, Sebastiano Battiato.</p>
-            </li>
-        </ol>
-    </section>
+        <!-- Main Content Area -->
+        <main class="content-area">
 
-    <section id="projects">
-        <h2>Projects & Activities</h2>
-        <div>
-            <h3>Università Degli Studi di Catania</h3>
-            <p>Catania, Italy</p>
-            <ul>
-                <li><strong>SATURN (System to predict optimize industries production)</strong> - 12/2020 - 01/2021</li>
-                <p>This project, approved by the European Community, involves entities such as the Department of Mathematics and Computer Science of the University of Catania and STMicroelectronics. It focuses on increasing multichip production in the factory and addresses the Flexible Job Shop Scheduling Problem using deep learning and reinforcement learning.</p>
-                <li><strong>Smart Mirror MS Thesis (A.I. System to predict clothes day comfort relative to the weather)</strong> - 03/2019 - 09/2019</li>
-                <p>Designed and implemented data structures and artificial intelligence algorithms to detect people and their parts. Researched various Convolutional Neural Networks’ performance on clothes classification by season and predicted clothes comfort by correlating with the weather using OpenCV and Keras.</p>
-                <li><strong>An implementation in C of Secure and Practical IBE of Walters’s Scheme</strong> - 09/2018 - 01/2019</li>
-                <p>Implemented a library that performs the functions of the project with PBC Pairing Based Cryptography, and Nettle. Conducted performance tests and designed data structures, optimized precomputation, and implemented cryptosystems.</p>
-                <li><strong>Develop of Egocentric shopping cart localization (Supermarket indoor localization)</strong> - 07/2018 - 09/2018</li>
-                <p>Implemented CNNs (Densenet, Alexnet, Squeezenet) to classify and predict coordinates by linear regression. Designed image dataset processing with different transforms and created dataset loader. Achieved an accuracy of 87% on the test set.</p>
-            </ul>
-        </div>
-    </section>
+            <!-- Hero Section -->
+            <section id="hero">
+                <div class="hero-content">
+                    <h1 class="glitch" data-text="VALERIO FRANCESCO PUGLISI">VALERIO FRANCESCO PUGLISI</h1>
+                    <div class="typing-container">
+                        <span id="typing-text"></span><span class="cursor">|</span>
+                    </div>
+                    <p class="hero-sub">AI Architect • Data Scientist • Ph.D. Researcher</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn primary-btn">INITIATE_CONTACT()</a>
+                        <a href="#projects" class="btn secondary-btn">VIEW_SOURCE()</a>
+                    </div>
+                </div>
+            </section>
 
-    <section id="languages">
-        <h2>Languages & Interests</h2>
-        <p><strong>Languages:</strong> Italian (mother tongue), English (C1).</p>
-        <p><strong>Interests:</strong> IT, Music, piano playing, singing.</p>
-    </section>
-        
+            <!-- About Section -->
+            <section id="about" class="terminal-section">
+                <div class="section-header">
+                    <h2><span class="prefix">></span> SYSTEM_IDENTITY</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="terminal-card">
+                    <p class="terminal-text">
+                        <span class="prompt">user@main:~$</span> cat bio.txt<br>
+                        Enthusiastically diving into the worlds of <span class="highlight">LLM</span>, <span
+                            class="highlight">Computer Vision</span>, and <span class="highlight">Audio</span>—because
+                        why not mix a little fun with science?<br><br>
+                        Experienced <span class="highlight">Data Scientist</span> with a demonstrated history of working
+                        in the industry. Skilled in Machine Learning, Data Analysis, and Statistical Modeling.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="terminal-section">
+                <div class="section-header">
+                    <h2><span class="prefix">></span> INSTALLED_MODULES</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> LANGUAGES</h3>
+                        <div class="tags">
+                            <span>Python</span><span>C</span><span>Java</span><span>Javascript</span><span>TypeScript</span><span>Bash</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> ML & DEEP LEARNING</h3>
+                        <div class="tags">
+                            <span>PyTorch</span><span>Tensorflow</span><span>Scikit-learn</span><span>Keras</span><span>HuggingFace</span><span>Gradio</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> DATA</h3>
+                        <div class="tags">
+                            <span>Pandas</span><span>SQL</span><span>MongoDB</span><span>PL-SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-wave-square"></i> AUDIO/CV</h3>
+                        <div class="tags">
+                            <span>TorchVision</span><span>OpenCV</span><span>Ultralytics</span><span>Librosa</span><span>PyRoomAcoustics</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-layer-group"></i> STACK</h3>
+                        <div class="tags">
+                            <span>Angular</span><span>Vue.js</span><span>SpringBoot</span><span>Flask</span><span>Django</span><span>Docker</span><span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="terminal-section">
+                <div class="section-header">
+                    <h2><span class="prefix">></span> EXECUTION_LOGS</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="timeline">
+
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="date">01/2024 - 06/2024</div>
+                            <h3>Deep Learning Engineer Consultant</h3>
+                            <h4>University of Catania (with Ferrari)</h4>
+                            <ul class="task-list">
+                                <li>> Developed SOTA Object Detection (YoloV8, DINO, DiffusionDet) and Tracking.</li>
+                                <li>> Data Synthesis via GANs & Audio Classifiers.</li>
+                                <li>> Stack: GitLab, OpenMMLab, PyTorch.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="date">06/2023 - 12/2023</div>
+                            <h3>Deep Learning Engineer Consultant</h3>
+                            <h4>ParkSmart s.r.l.</h4>
+                            <ul class="task-list">
+                                <li>> NVIDIA DeepStream custom pipelines for CV.</li>
+                                <li>> Real-time tracking with Gst-nvtracker.</li>
+                                <li>> Stack: Python, PyTorch, JIRA, DeepStream.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="date">03/2021 - 06/2023</div>
+                            <h3>ML & Deep Learning Engineer Consultant</h3>
+                            <h4>Vicosystems s.r.l.</h4>
+                            <ul class="task-list">
+                                <li>> Unsupervised Predictive Maintenance (SMILE project).</li>
+                                <li>> Multimodal Audio Classification systems.</li>
+                                <li>> Stack: PyTorch, Tensorflow, ONNX, Angular.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="date">10/2020 – 03/2021</div>
+                            <h3>Full Stack & ML Engineer</h3>
+                            <h4>Paycasso LTD (London/Remote)</h4>
+                            <ul class="task-list">
+                                <li>> Microservices web app development.</li>
+                                <li>> Image Labeler Web App (Backend + Frontend).</li>
+                                <li>> Stack: Vue.js, SpringBoot, Kafka, AWS, Docker.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="date">10/2019 - 10/2020</div>
+                            <h3>Full Stack Developer & Analyst</h3>
+                            <h4>Reply s.r.l.</h4>
+                            <ul class="task-list">
+                                <li>> Banking web apps for Intesa Sanpaolo.</li>
+                                <li>> R&D on Fintech customer models.</li>
+                                <li>> Stack: Angular, Java SpringBoot, PL-SQL.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="terminal-section">
+                <div class="section-header">
+                    <h2><span class="prefix">></span> KNOWLEDGE_BASE</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="cards-container">
+                    <div class="data-card">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>PhD in Computer Science</h3>
+                        <p class="institution">University of Catania (2020 - 2023)</p>
+                        <p class="details">Thesis: Audio Analysis via Deep Learning for Forensics.</p>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-icon"><i class="fas fa-university"></i></div>
+                        <h3>Master's in CS (Security & AI)</h3>
+                        <p class="institution">University of Catania (2015 - 2019)</p>
+                        <p class="details">Grade: 110/110. Thesis: Smart Mirror.</p>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-icon"><i class="fas fa-scroll"></i></div>
+                        <h3>Bachelor's in CS</h3>
+                        <p class="institution">University of Catania (2011 - 2016)</p>
+                        <p class="details">Grade: 100/110. Thesis: Wavelet Cryptography.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects & Publications -->
+            <section id="projects" class="terminal-section">
+                <div class="section-header">
+                    <h2><span class="prefix">></span> RESEARCH_ARCHIVES</h2>
+                    <div class="line"></div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('pubs')">PUBLICATIONS</button>
+                    <button class="tab-btn" onclick="openTab('projs')">PROJECTS</button>
+                </div>
+
+                <div id="pubs" class="tab-content active">
+                    <div class="archive-list">
+                        <div class="archive-item">
+                            <span class="archive-date">[2023]</span>
+                            <p><strong>Deep Audio Analyzer:</strong> A Framework to Industrialize the Research on Audio
+                                Forensics. (IEEE MetroXRAINE)</p>
+                        </div>
+                        <div class="archive-item">
+                            <span class="archive-date">[2022]</span>
+                            <p><strong>Dairy Cow Behavior Recognition</strong> Using Computer Vision Techniques and CNN.
+                                (IEEE IoTaIS)</p>
+                        </div>
+                        <div class="archive-item">
+                            <span class="archive-date">[2021]</span>
+                            <p><strong>CNN-based Audio Sensor</strong> for Rainfall Estimation. (IEEE IDAACS)</p>
+                        </div>
+                        <div class="archive-item">
+                            <span class="archive-date">[2019]</span>
+                            <p><strong>Audio Classification for Rainfall Estimation</strong> (IEEE IDAACS)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="projs" class="tab-content">
+                    <div class="archive-list">
+                        <div class="archive-item">
+                            <span class="archive-date">[SATURN]</span>
+                            <p>Deep Learning & Reinforcement Learning for flexible job shop scheduling optimization
+                                (STMicroelectronics).</p>
+                        </div>
+                        <div class="archive-item">
+                            <span class="archive-date">[SMART MIRROR]</span>
+                            <p>AI System to predict clothes day comfort relative to weather using OpenCV and Keras.</p>
+                        </div>
+                        <div class="archive-item">
+                            <span class="archive-date">[VSearch]</span>
+                            <p>Search engine for internet contacts recovery capable of scraping and crawling.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="terminal-section">
+                <div class="section-header">
+                    <h2><span class="prefix">></span> ESTABLISH_UPLINK</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="contact-terminal">
+                    <p class="command">Sending transmission to: valeriopuglisi.vp@gmail.com</p>
+                    <div class="contact-links">
+                        <a href="mailto:valeriopuglisi.vp@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i>
+                            EMAIL_TRANSMISSION</a>
+                        <a href="https://www.linkedin.com/in/valerio-francesco-puglisi/?locale=en_US"
+                            class="contact-btn"><i class="fab fa-linkedin"></i> LINKEDIN_NETWORK</a>
+                        <a href="https://scholar.google.com/citations?user=E0sPqWcAAAAJ&hl=en" class="contact-btn"><i
+                                class="fas fa-graduation-cap"></i> GOOGLE_SCHOLAR</a>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>SYSTEM_ID: VALERIO_PUGLISI_V2.0 | © 2024 ALL RIGHTS RESERVED | <span class="blink">_</span></p>
+            </footer>
+
+        </main>
     </div>
-    <footer>
-        <p>© 2024 Valerio Puglisi. All rights reserved.</p>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="scripts.js"></script>
-</body>
-</html>
 
+    <script src="script.js"></script>
+</body>
+
+</html>
