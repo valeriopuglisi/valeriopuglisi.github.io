@@ -69,11 +69,6 @@
 <body class="dental-site">
     <a href="#main" class="skip-link">Salta al contenuto principale</a>
 
-    <!-- Discreet portfolio back-link -->
-    <a href="../index.html" class="portfolio-back" title="Torna al portfolio di Valerio Puglisi">
-        <i class="fas fa-arrow-left"></i> Portfolio VP
-    </a>
-
     <!-- Top bar -->
     <div class="topbar">
         <div class="container topbar-inner">
@@ -85,6 +80,9 @@
             <div class="topbar-actions">
                 <a href="#" aria-label="Area pazienti"><i class="fas fa-user"></i> Area pazienti</a>
                 <a href="#" aria-label="Lingua italiano"><i class="fas fa-globe"></i> IT</a>
+                <a href="../index.html" class="portfolio-back" title="Torna al portfolio di Valerio Puglisi">
+                    <i class="fas fa-arrow-left"></i> Portfolio VP
+                </a>
             </div>
         </div>
     </div>
@@ -107,10 +105,11 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#servizi">Servizi</a></li>
                 <li><a href="#chi-siamo">Chi Siamo</a></li>
-                <li><a href="#team">Team</a></li>
+                <li class="nav-secondary"><a href="#team">Team</a></li>
                 <li><a href="#listino">Listino</a></li>
-                <li><a href="#testimonianze">Recensioni</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li class="nav-secondary"><a href="#testimonianze">Recensioni</a></li>
+                <li class="nav-secondary"><a href="#faq">FAQ</a></li>
+                <li><a href="#assistente-ai">Assistente AI</a></li>
                 <li><a href="#contatti">Contatti</a></li>
                 <li>
                     <a href="tel:+390950000000" class="nav-cta">
@@ -144,6 +143,13 @@
                             <i class="fas fa-calendar-check"></i> Prenota Online
                         </a>
                     </div>
+
+                    <button type="button" class="hero-ai-cta" onclick="window.__openAI && window.__openAI()">
+                        <span class="ai-dot"></span>
+                        <i class="fas fa-robot"></i>
+                        Preferisci scrivere? Parla ora con il nostro assistente AI
+                        <i class="fas fa-arrow-down arrow-down"></i>
+                    </button>
                     <div class="hero-trust">
                         <div class="hero-trust-item">
                             <div>
@@ -472,6 +478,22 @@
             </div>
         </section>
 
+        <!-- AI Mid Banner -->
+        <section class="ai-midbanner" aria-label="Assistente AI">
+            <div class="container ai-midbanner-inner">
+                <div class="ai-midbanner-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                    <h2>Non trovi la prestazione che cerchi?</h2>
+                    <p>Chiedi direttamente al nostro assistente AI: risponde su costi, disponibilità e ti aiuta a prenotare in tempo reale, 24 ore su 24.</p>
+                </div>
+                <button type="button" class="ai-midbanner-arrow" onclick="window.__openAI && window.__openAI()">
+                    Parla con l'AI <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
         <!-- Testimonianze -->
         <section class="section" id="testimonianze">
             <div class="container">
@@ -717,19 +739,83 @@
             </div>
         </section>
 
-        <!-- AI Agent -->
-        <section class="agent-section">
+        <!-- AI How-it-works -->
+        <section class="ai-explain" id="assistente-ai">
             <div class="container">
-                <div class="agent-wrapper">
-                    <h2>Parla con il nostro assistente virtuale</h2>
-                    <p>
-                        Clicca sul widget qui sotto e chiedi informazioni su trattamenti, costi e disponibilità.
-                        Risponde in tempo reale, 24 ore su 24, in linguaggio naturale.
+                <div class="section-head">
+                    <span class="section-eyebrow">Assistente AI · sempre attivo</span>
+                    <h2 class="section-title">La segreteria che non chiude mai</h2>
+                    <p class="section-lead">
+                        Ricevi risposte immediate su costi, servizi e appuntamenti anche fuori orario &mdash;
+                        senza attese al telefono, senza compilare form.
                     </p>
-                    <elevenlabs-convai agent-id="agent_8401kwq54j00fkvart23xyt7m2j3"></elevenlabs-convai>
+                </div>
+
+                <div class="ai-explain-grid">
+                    <!-- Simulated chat preview -->
+                    <div class="ai-explain-visual">
+                        <div class="ai-explain-visual-head">
+                            <div class="ai-explain-avatar"><i class="fas fa-robot"></i></div>
+                            <div>
+                                <div class="ai-explain-visual-name">Sofia · Assistente AI</div>
+                                <div class="ai-explain-visual-status">Online ora</div>
+                            </div>
+                        </div>
+                        <div class="chat-bubble bot">
+                            Ciao! Sono Sofia, l'assistente dello Studio Sorriso. Come posso aiutarti?
+                        </div>
+                        <div class="chat-bubble user">
+                            Quanto costa un impianto singolo?
+                        </div>
+                        <div class="chat-bubble bot">
+                            L'impianto singolo costa <strong>€ 1.100</strong> e include chirurgia guidata
+                            e corona provvisoria. La prima visita &egrave; gratuita: vuoi che ti prenoti un appuntamento?
+                        </div>
+                    </div>
+
+                    <!-- Content + CTA -->
+                    <div class="ai-explain-content">
+                        <span class="section-eyebrow">Come funziona</span>
+                        <h2>Chiedi. Ascolta. Prenota.</h2>
+                        <p class="lead">
+                            Il nostro assistente AI conosce tutti i nostri servizi, il listino aggiornato
+                            e la disponibilit&agrave; degli specialisti. Puoi parlargli a voce o scrivere.
+                        </p>
+
+                        <ul class="ai-features-list">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <div><strong>Risposte immediate</strong> su costi e prestazioni, senza attese al telefono.</div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <div><strong>Disponibile 24/7</strong> &mdash; anche di notte, nei weekend e nei festivi.</div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <div><strong>Prenotazioni assistite</strong>: ti aiuta a scegliere lo specialista e l'orario giusto.</div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <div><strong>Privacy garantita</strong>: nessun dato salvato senza il tuo consenso esplicito.</div>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="ai-explain-cta" onclick="window.__openAI && window.__openAI()">
+                            <div class="ai-explain-cta-icon"><i class="fas fa-comment-dots"></i></div>
+                            <div class="ai-explain-cta-text">
+                                <b>Inizia la conversazione</b>
+                                <span>Clicca qui o sull'icona in basso a destra &darr;</span>
+                            </div>
+                            <i class="fas fa-arrow-right pointer"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- ElevenLabs Convai widget: injected globally (floating bottom-right). No visible container needed. -->
+        <elevenlabs-convai agent-id="agent_8401kwq54j00fkvart23xyt7m2j3"></elevenlabs-convai>
 
     </main>
 
@@ -811,6 +897,16 @@
         <i class="fas fa-phone"></i>
     </a>
 
+    <!-- AI Lane Label — visible on wide desktops, sits above the reserved widget lane -->
+    <aside class="ai-lane-label" aria-hidden="true">
+        <span class="badge"><span class="dot"></span> Assistente AI · Online</span>
+        <h3>Il tuo assistente virtuale è qui</h3>
+        <p>Chiedi info su costi, prenota una visita o parla di un'urgenza. Rispondiamo 24/7, anche in vocale.</p>
+        <div class="arrow-hint">
+            Clicca sull'icona qui sotto <i class="fas fa-arrow-down"></i>
+        </div>
+    </aside>
+
     <!-- Cookie banner -->
     <div class="cookie-banner" id="cookieBanner">
         <h5>🍪 Utilizziamo i cookie</h5>
@@ -839,6 +935,39 @@
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 10);
         });
+
+        // Programmatic opener for the ElevenLabs widget.
+        // The widget renders as <elevenlabs-convai> and injects a floating trigger button.
+        // We try several strategies to open it when users click one of our AI CTAs.
+        window.__openAI = function () {
+            const el = document.querySelector('elevenlabs-convai');
+            if (!el) return;
+
+            // Try the public API surface exposed by the widget
+            try {
+                if (typeof el.open === 'function') { el.open(); return; }
+                if (typeof el.expand === 'function') { el.expand(); return; }
+                if (typeof el.show === 'function') { el.show(); return; }
+            } catch (e) { /* fall through */ }
+
+            // Fallback: click the widget's internal trigger button (shadow DOM aware)
+            const clickInside = (root) => {
+                if (!root) return false;
+                const btn = root.querySelector && (
+                    root.querySelector('button[aria-label*="open" i]') ||
+                    root.querySelector('button[aria-label*="chat" i]') ||
+                    root.querySelector('button[aria-label*="convai" i]') ||
+                    root.querySelector('button')
+                );
+                if (btn) { btn.click(); return true; }
+                return false;
+            };
+            if (clickInside(el.shadowRoot)) return;
+            if (clickInside(el)) return;
+
+            // Last resort: scroll to the widget so the user sees it
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
     </script>
 
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>

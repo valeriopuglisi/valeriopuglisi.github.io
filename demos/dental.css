@@ -58,6 +58,100 @@ body.dental-site {
     line-height: 1.65;
     font-size: 16px;
     overflow-x: hidden;
+    /* Reserve a permanent lane on the right for the ElevenLabs widget
+       so it never covers page content on desktop. */
+    --widget-lane: 440px;
+    padding-right: var(--widget-lane);
+    transition: padding-right 0.3s ease;
+    position: relative;
+}
+
+/* AI-lane visual guide: a soft vertical strip on the reserved area,
+   with a permanent label pointing at the widget below. */
+body.dental-site::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--widget-lane);
+    background:
+        linear-gradient(180deg,
+            rgba(3, 105, 161, 0.04) 0%,
+            rgba(20, 184, 166, 0.06) 100%);
+    border-left: 1px dashed rgba(3, 105, 161, 0.15);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ai-lane-label {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 400px;
+    padding: 1.5rem 1.75rem;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px dashed rgba(3, 105, 161, 0.35);
+    border-radius: 20px;
+    z-index: 2;
+    pointer-events: none;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.ai-lane-label .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+    color: #fff;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+}
+
+.ai-lane-label .badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--c-success);
+    border-radius: 50%;
+    animation: dot-pulse 2s infinite;
+}
+
+.ai-lane-label h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--c-text);
+    margin-bottom: 0.4rem;
+}
+
+.ai-lane-label p {
+    color: var(--c-text-soft);
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.ai-lane-label .arrow-hint {
+    margin-top: 1rem;
+    color: var(--c-cta);
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    animation: hint-shake 1.5s ease-in-out infinite;
+}
+
+@keyframes hint-shake {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
 }
 
 .dental-site img { max-width: 100%; display: block; }
@@ -102,26 +196,22 @@ body.dental-site {
 
 .skip-link:focus { left: 0; }
 
-/* Portfolio back-link */
+/* Portfolio back-link — small discreet link in top bar */
 .portfolio-back {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(15, 23, 42, 0.85);
-    color: #fff;
-    padding: 0.5rem 0.9rem;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.78rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 999px;
-    font-size: 0.8rem;
-    z-index: 90;
-    backdrop-filter: blur(8px);
-    box-shadow: var(--shadow);
-    transition: transform 0.2s;
+    transition: background 0.2s;
 }
 
 .portfolio-back:hover {
-    color: #fff;
-    transform: translateY(-2px);
-    background: rgba(15, 23, 42, 0.95);
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* =========================================
@@ -159,11 +249,21 @@ body.dental-site {
 
 .topbar-actions {
     display: flex;
-    gap: 1rem;
+    gap: 0.85rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .topbar-actions a { color: rgba(255, 255, 255, 0.85); }
+
+/* Progressive hide of secondary topbar items when width is tight */
+@media (max-width: 1400px) {
+    .topbar-meta a[href^="mailto"] { display: none; }
+}
+@media (max-width: 1200px) {
+    .topbar-actions a[aria-label*="Area"],
+    .topbar-actions a[aria-label*="Lingua"] { display: none; }
+}
 
 /* =========================================
    Navigation
@@ -227,16 +327,19 @@ body.dental-site {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1.1rem;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .nav-menu a {
     color: var(--c-text-soft);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     padding: 0.5rem 0;
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-menu a:hover { color: var(--c-primary); }
@@ -254,6 +357,13 @@ body.dental-site {
     gap: 0.5rem;
     box-shadow: var(--shadow-cta);
     transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+/* When the widget lane is active, hide low-priority nav links so the
+   remaining items and the Chiama-Ora CTA are never cut off. */
+@media (min-width: 1281px) {
+    .nav-menu li.nav-secondary { display: none; }
 }
 
 .nav-cta:hover {
@@ -410,11 +520,14 @@ body.dental-site {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: center;
     position: relative;
+    max-width: 780px;
 }
+
+.hero-visual { display: none; }
 
 .hero-badge {
     display: inline-flex;
@@ -1532,23 +1645,38 @@ body.dental-site {
 }
 
 /* =========================================
-   Cookie banner
+   Cookie banner — bottom-LEFT to avoid ElevenLabs widget on the right
    ========================================= */
 .cookie-banner {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    left: 20px;
-    max-width: 480px;
-    margin-left: auto;
+    bottom: 16px;
+    left: 16px;
+    right: auto;
+    max-width: 320px;
     background: #fff;
     border: 1px solid var(--c-border);
     border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
-    box-shadow: var(--shadow-lg);
+    padding: 0.85rem 1rem;
+    box-shadow: var(--shadow);
     z-index: 80;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--c-text-soft);
+}
+
+.cookie-banner h5 {
+    font-size: 0.88rem;
+    margin-bottom: 0.25rem;
+}
+
+.cookie-banner p {
+    font-size: 0.78rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.4;
+}
+
+.cookie-banner .btn {
+    padding: 0.4rem 0.85rem !important;
+    font-size: 0.78rem !important;
 }
 
 .cookie-banner.hidden { display: none; }
@@ -1576,6 +1704,499 @@ body.dental-site {
 }
 
 /* =========================================
+   AI Hint Bubble — points to ElevenLabs widget (bottom-right)
+   ========================================= */
+.ai-hint {
+    display: none; /* replaced by .ai-lane-label */
+    position: fixed;
+    bottom: 110px;
+    right: 24px;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    padding: 1rem 1.15rem 1rem 1rem;
+    box-shadow: 0 20px 50px rgba(3, 105, 161, 0.25);
+    max-width: 300px;
+    z-index: 75;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    animation: ai-hint-in 0.6s ease-out 1.5s both, ai-hint-float 3s ease-in-out 2.1s infinite;
+    transform-origin: bottom right;
+}
+
+.ai-hint.dismissed { display: none; }
+
+.ai-hint::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-right: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+    transform: rotate(45deg);
+}
+
+.ai-hint-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+    position: relative;
+}
+
+.ai-hint-avatar::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: var(--c-success);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    animation: dot-pulse 2s infinite;
+}
+
+.ai-hint-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.ai-hint-title {
+    font-weight: 700;
+    color: var(--c-text);
+    font-size: 0.92rem;
+    margin-bottom: 0.15rem;
+}
+
+.ai-hint-text {
+    color: var(--c-text-soft);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.ai-hint-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: var(--c-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.ai-hint-close:hover { color: var(--c-text); }
+
+@keyframes ai-hint-in {
+    0% { opacity: 0; transform: scale(0.7) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes ai-hint-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* =========================================
+   Hero AI CTA (pointer badge to widget)
+   ========================================= */
+.hero-ai-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, rgba(3, 105, 161, 0.08), rgba(20, 184, 166, 0.08));
+    border: 1.5px dashed var(--c-primary);
+    color: var(--c-primary);
+    padding: 0.75rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.hero-ai-cta:hover {
+    background: linear-gradient(135deg, rgba(3, 105, 161, 0.15), rgba(20, 184, 166, 0.15));
+    color: var(--c-primary-dark);
+    transform: translateX(4px);
+}
+
+.hero-ai-cta .ai-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--c-success);
+    border-radius: 50%;
+    animation: dot-pulse 2s infinite;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.hero-ai-cta .arrow-down {
+    animation: arrow-bounce 1.5s ease-in-out infinite;
+    color: var(--c-cta);
+}
+
+@keyframes arrow-bounce {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(3px, 3px); }
+}
+
+/* =========================================
+   AI mid-banner (between listino and testimonianze)
+   ========================================= */
+.ai-midbanner {
+    background: linear-gradient(135deg, #075985 0%, #0d9488 100%);
+    color: #fff;
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-midbanner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.12), transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(255,255,255,0.08), transparent 45%);
+    pointer-events: none;
+}
+
+.ai-midbanner-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+}
+
+.ai-midbanner-icon {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ai-midbanner-icon::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    background: var(--c-success);
+    border: 3px solid #075985;
+    border-radius: 50%;
+    animation: dot-pulse 2s infinite;
+}
+
+.ai-midbanner h2 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 0.35rem;
+}
+
+.ai-midbanner p {
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.ai-midbanner-arrow {
+    background: var(--c-cta);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    box-shadow: var(--shadow-cta);
+    animation: pulse-shadow 2s infinite;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.ai-midbanner-arrow:hover {
+    color: #fff;
+    background: var(--c-cta-dark);
+    transform: translateY(-2px);
+}
+
+.ai-midbanner-arrow i {
+    animation: arrow-bounce-h 1.5s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce-h {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+/* =========================================
+   AI How-it-works section (replaces standalone widget section)
+   ========================================= */
+.ai-explain {
+    background: linear-gradient(180deg, var(--c-bg-blue) 0%, #fff 100%);
+    padding: 5rem 0;
+    position: relative;
+}
+
+.ai-explain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.ai-explain-visual {
+    position: relative;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-primary-dark));
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.ai-explain-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.3), transparent 45%);
+}
+
+.ai-explain-visual-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.ai-explain-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.ai-explain-avatar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--c-success);
+    border: 2px solid var(--c-primary);
+    border-radius: 50%;
+    animation: dot-pulse 2s infinite;
+}
+
+.ai-explain-visual-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.ai-explain-visual-status {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.ai-explain-visual-status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--c-success);
+    border-radius: 50%;
+}
+
+.chat-bubble {
+    position: relative;
+    padding: 0.85rem 1.15rem;
+    border-radius: 18px;
+    margin-bottom: 0.85rem;
+    max-width: 85%;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    animation: bubble-in 0.5s ease-out backwards;
+}
+
+.chat-bubble.user {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--c-text);
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.chat-bubble.bot {
+    background: rgba(20, 184, 166, 0.25);
+    border: 1px solid rgba(20, 184, 166, 0.4);
+    color: #fff;
+    border-bottom-left-radius: 4px;
+    backdrop-filter: blur(6px);
+}
+
+.chat-bubble:nth-child(2) { animation-delay: 0.15s; }
+.chat-bubble:nth-child(3) { animation-delay: 0.35s; }
+.chat-bubble:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes bubble-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.ai-explain-content .section-eyebrow {
+    justify-content: flex-start;
+}
+
+.ai-explain-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ai-explain-content p.lead {
+    color: var(--c-text-soft);
+    font-size: 1.05rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.65;
+}
+
+.ai-features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.ai-features-list li {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    color: var(--c-text-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.ai-features-list i {
+    color: var(--c-accent);
+    background: rgba(20, 184, 166, 0.12);
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+
+.ai-features-list strong { color: var(--c-text); }
+
+.ai-explain-cta {
+    background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+    color: #fff;
+    padding: 1.25rem 1.75rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    width: 100%;
+    text-align: left;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ai-explain-cta:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.ai-explain-cta-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.ai-explain-cta-text {
+    flex: 1;
+}
+
+.ai-explain-cta-text b {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.ai-explain-cta-text span {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+}
+
+.ai-explain-cta i.pointer {
+    font-size: 1.25rem;
+    animation: arrow-bounce-h 1.5s ease-in-out infinite;
+}
+
+/* =========================================
    Floating call button (mobile)
    ========================================= */
 .mobile-call {
@@ -1599,6 +2220,16 @@ body.dental-site {
 /* =========================================
    Responsive
    ========================================= */
+/* Disable widget lane on tablet/narrow desktop — page uses full width,
+   widget floats as overlay in bottom-right (standard ElevenLabs behavior). */
+@media (max-width: 1280px) {
+    body.dental-site {
+        padding-right: 0;
+    }
+    body.dental-site::after { display: none; }
+    .ai-lane-label { display: none; }
+}
+
 @media (max-width: 900px) {
     .hero-grid,
     .about-grid,
@@ -1645,7 +2276,12 @@ body.dental-site {
     .form-row { grid-template-columns: 1fr; }
 
     .mobile-call { display: flex; }
-    .portfolio-back { bottom: 90px; }
+
+    .ai-hint { display: none; }
+    .ai-midbanner-inner { grid-template-columns: 1fr; text-align: center; }
+    .ai-midbanner-icon { margin: 0 auto; }
+    .ai-explain-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .cookie-banner { bottom: 90px; left: 12px; right: 12px; max-width: none; }
 
     .pricing-cta { text-align: center; justify-content: center; }
     .pricing-cta-text { text-align: center; }
