@@ -58,101 +58,11 @@ body.dental-site {
     line-height: 1.65;
     font-size: 16px;
     overflow-x: hidden;
-    /* Reserve a permanent lane on the right for the ElevenLabs widget
-       so it never covers page content on desktop. */
-    --widget-lane: 440px;
-    padding-right: var(--widget-lane);
-    transition: padding-right 0.3s ease;
-    position: relative;
 }
 
-/* AI-lane visual guide: a soft vertical strip on the reserved area,
-   with a permanent label pointing at the widget below. */
-body.dental-site::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: var(--widget-lane);
-    background:
-        linear-gradient(180deg,
-            rgba(3, 105, 161, 0.04) 0%,
-            rgba(20, 184, 166, 0.06) 100%);
-    border-left: 1px dashed rgba(3, 105, 161, 0.15);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.ai-lane-label {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    width: 400px;
-    padding: 1.5rem 1.75rem;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
-    border: 1px dashed rgba(3, 105, 161, 0.35);
-    border-radius: 20px;
-    z-index: 2;
-    pointer-events: none;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-}
-
-.ai-lane-label .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
-    color: #fff;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.85rem;
-}
-
-.ai-lane-label .badge .dot {
-    width: 8px;
-    height: 8px;
-    background: var(--c-success);
-    border-radius: 50%;
-    animation: dot-pulse 2s infinite;
-}
-
-.ai-lane-label h3 {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    color: var(--c-text);
-    margin-bottom: 0.4rem;
-}
-
-.ai-lane-label p {
-    color: var(--c-text-soft);
-    font-size: 0.85rem;
-    margin: 0;
-    line-height: 1.5;
-}
-
-.ai-lane-label .arrow-hint {
-    margin-top: 1rem;
-    color: var(--c-cta);
-    font-weight: 700;
-    font-size: 0.85rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    animation: hint-shake 1.5s ease-in-out infinite;
-}
-
-@keyframes hint-shake {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-}
+/* AI lane label completely disabled — the widget owns bottom-right, no fixed
+   sidebar that fights with it. */
+.ai-lane-label { display: none !important; }
 
 .dental-site img { max-width: 100%; display: block; }
 
@@ -553,14 +463,11 @@ body.dental-site::after {
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3rem;
     align-items: center;
     position: relative;
-    max-width: 780px;
 }
-
-.hero-visual { display: none; }
 
 .hero-badge {
     display: inline-flex;
@@ -2253,16 +2160,6 @@ body.dental-site::after {
 /* =========================================
    Responsive
    ========================================= */
-/* Disable widget lane on tablet/narrow desktop — page uses full width,
-   widget floats as overlay in bottom-right (standard ElevenLabs behavior). */
-@media (max-width: 1280px) {
-    body.dental-site {
-        padding-right: 0;
-    }
-    body.dental-site::after { display: none; }
-    .ai-lane-label { display: none; }
-}
-
 @media (max-width: 900px) {
     .hero-grid,
     .about-grid,
