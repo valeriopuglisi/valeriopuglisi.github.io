@@ -4,350 +4,843 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0369a1">
     <meta name="description"
-        content="Demo AI Assistant per uno studio dentistico - listino prestazioni e agente vocale conversazionale.">
-    <title>Studio Dentistico Sorriso · Demo AI | Valerio Puglisi</title>
+        content="Studio Dentistico Sorriso — Odontoiatria specialistica a Catania. Prima visita gratuita, pagamento rateale, équipe di specialisti. Prenota ora: +39 095 000 00 00.">
+    <meta name="keywords"
+        content="dentista catania, studio dentistico, implantologia, ortodonzia invisibile, sbiancamento, faccette dentali, prima visita gratuita">
+    <meta name="robots" content="index, follow">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Studio Dentistico Sorriso — Catania">
+    <meta property="og:description"
+        content="Odontoiatria specialistica a Catania. Prima visita gratuita, pagamento rateale.">
+    <meta property="og:locale" content="it_IT">
+
+    <title>Studio Dentistico Sorriso · Odontoiatria a Catania</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../style.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="dental.css">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+    <!-- JSON-LD Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Studio Dentistico Sorriso",
+        "image": "",
+        "url": "https://valeriopuglisi.github.io/demos/dental.html",
+        "telephone": "+39-095-000-0000",
+        "priceRange": "€€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via Etnea 123",
+            "addressLocality": "Catania",
+            "postalCode": "95124",
+            "addressCountry": "IT"
+        },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+        }],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "342"
+        }
+    }
+    </script>
 </head>
 
-<body>
-    <canvas id="neural-canvas"></canvas>
+<body class="dental-site">
+    <a href="#main" class="skip-link">Salta al contenuto principale</a>
 
-    <nav class="navbar gloss">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo">
-                <span class="logo-symbol">VP_</span><span class="logo-text">AI.ARCHITECT</span>
+    <!-- Discreet portfolio back-link -->
+    <a href="../index.html" class="portfolio-back" title="Torna al portfolio di Valerio Puglisi">
+        <i class="fas fa-arrow-left"></i> Portfolio VP
+    </a>
+
+    <!-- Top bar -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="topbar-meta">
+                <a href="tel:+390950000000"><i class="fas fa-phone"></i> +39 095 000 00 00</a>
+                <a href="mailto:info@studiosorriso.it"><i class="fas fa-envelope"></i> info@studiosorriso.it</a>
+                <span><i class="fas fa-clock"></i> Lun–Ven 9:00–19:00 · Sab 9:00–13:00</span>
+            </div>
+            <div class="topbar-actions">
+                <a href="#" aria-label="Area pazienti"><i class="fas fa-user"></i> Area pazienti</a>
+                <a href="#" aria-label="Lingua italiano"><i class="fas fa-globe"></i> IT</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" aria-label="Menu principale">
+        <div class="container nav-inner">
+            <a href="#top" class="brand">
+                <div class="brand-logo"><i class="fas fa-tooth"></i></div>
+                <div>
+                    <div class="brand-name">Studio Sorriso</div>
+                    <div class="brand-sub">Odontoiatria · dal 1998</div>
+                </div>
             </a>
-            <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="../about.html" class="nav-link">01. About</a></li>
-                <li><a href="../experience.html" class="nav-link">02. Experience</a></li>
-                <li><a href="../projects.html" class="nav-link">03. Projects</a></li>
-                <li><a href="index.html" class="nav-link active">04. Demos</a></li>
-                <li><a href="../blog/index.html" class="nav-link">05. Blog</a></li>
-                <li><a href="../index.html#contact" class="nav-link btn-primary">Contact</a></li>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#chi-siamo">Chi Siamo</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#listino">Listino</a></li>
+                <li><a href="#testimonianze">Recensioni</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+                <li>
+                    <a href="tel:+390950000000" class="nav-cta">
+                        <i class="fas fa-phone"></i> Chiama Ora
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <main class="page-content">
-        <div class="container">
-            <!-- Clinic-styled demo container -->
-            <div class="clinic-theme">
-                <div class="clinic-container">
+    <main id="main">
 
-                    <!-- Clinic Header -->
-                    <header class="clinic-header">
-                        <div class="clinic-logo">
-                            <i class="fas fa-tooth"></i>
+        <!-- Hero -->
+        <section class="hero" id="top">
+            <div class="container hero-grid">
+                <div>
+                    <span class="hero-badge">
+                        <span class="dot"></span> Prima visita gratuita · Prenota subito
+                    </span>
+                    <h1>Il tuo <span class="accent">sorriso</span> merita specialisti di fiducia.</h1>
+                    <p class="lead">
+                        Da oltre 25 anni ci prendiamo cura della salute dei tuoi denti con un'équipe
+                        di specialisti, tecnologie di ultima generazione e un percorso di cura trasparente.
+                        Pagamento rateale a tasso zero fino a 24 mesi.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="tel:+390950000000" class="btn btn-cta btn-pulse">
+                            <i class="fas fa-phone-volume"></i> Chiama +39 095 000 00 00
+                        </a>
+                        <a href="#contatti" class="btn btn-outline">
+                            <i class="fas fa-calendar-check"></i> Prenota Online
+                        </a>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="hero-trust-item">
+                            <div>
+                                <div class="hero-trust-num">25+</div>
+                                <div class="hero-trust-label">Anni di<br>esperienza</div>
+                            </div>
+                        </div>
+                        <div class="hero-trust-item">
+                            <div>
+                                <div class="hero-trust-num">15.000</div>
+                                <div class="hero-trust-label">Pazienti<br>trattati</div>
+                            </div>
+                        </div>
+                        <div class="hero-trust-item">
+                            <div>
+                                <div class="hero-trust-num">4.9<i class="fas fa-star" style="color:#fbbf24; font-size:1rem; margin-left:0.35rem;"></i></div>
+                                <div class="hero-trust-label">342 recensioni<br>Google</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-visual-main">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <div class="hero-float top-left">
+                        <div class="hero-float-icon"><i class="fas fa-shield-heart"></i></div>
+                        <div>
+                            <div class="hero-float-title">Sicurezza</div>
+                            <div class="hero-float-desc">Protocolli certificati ISO</div>
+                        </div>
+                    </div>
+                    <div class="hero-float bottom-right">
+                        <div class="hero-float-icon accent"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <div class="hero-float-title">Garanzia 5 anni</div>
+                            <div class="hero-float-desc">Su impianti e protesi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust bar -->
+        <section class="trust-bar">
+            <div class="container trust-bar-inner">
+                <span class="trust-bar-label">Partner tecnologici</span>
+                <div class="trust-bar-logos">
+                    <span class="trust-logo"><i class="fas fa-award"></i> Straumann</span>
+                    <span class="trust-logo"><i class="fas fa-award"></i> Nobel Biocare</span>
+                    <span class="trust-logo"><i class="fas fa-award"></i> Invisalign</span>
+                    <span class="trust-logo"><i class="fas fa-award"></i> 3Shape</span>
+                    <span class="trust-logo"><i class="fas fa-certificate"></i> ISO 9001</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servizi -->
+        <section class="section" id="servizi">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">I nostri servizi</span>
+                    <h2 class="section-title">Un centro odontoiatrico completo</h2>
+                    <p class="section-lead">
+                        Dalla prevenzione all'implantologia avanzata: tutti i trattamenti sotto un unico tetto,
+                        con specialisti dedicati per ogni ambito.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-tooth"></i></div>
+                        <h3>Igiene e Prevenzione</h3>
+                        <p>Visite di controllo, ablazione tartaro e sigillature per proteggere il tuo sorriso ogni giorno.</p>
+                        <a href="#listino" class="service-link">Scopri di più <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-user-md"></i></div>
+                        <h3>Implantologia</h3>
+                        <p>Impianti singoli, All-on-Four e chirurgia guidata computerizzata con garanzia 5 anni.</p>
+                        <a href="#listino" class="service-link">Scopri di più <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
+                        <h3>Ortodonzia Invisibile</h3>
+                        <p>Provider Invisalign certificato per allineamenti dentali estetici e discreti.</p>
+                        <a href="#listino" class="service-link">Scopri di più <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-smile"></i></div>
+                        <h3>Estetica Dentale</h3>
+                        <p>Faccette in ceramica, sbiancamento professionale e ricostruzioni estetiche.</p>
+                        <a href="#listino" class="service-link">Scopri di più <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-child"></i></div>
+                        <h3>Pedodonzia</h3>
+                        <p>Cure dedicate ai più piccoli, con un approccio ludico e senza paura del dentista.</p>
+                        <a href="#listino" class="service-link">Scopri di più <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-x-ray"></i></div>
+                        <h3>Diagnostica 3D</h3>
+                        <p>TAC Cone Beam, panoramica digitale e scansione intraorale per diagnosi millimetriche.</p>
+                        <a href="#listino" class="service-link">Scopri di più <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call CTA banner #1 -->
+        <section class="call-banner">
+            <div class="container call-banner-inner">
+                <div class="call-banner-icon">
+                    <i class="fas fa-phone-volume"></i>
+                </div>
+                <div class="call-banner-text">
+                    <h2>Non aspettare che il problema peggiori</h2>
+                    <p>La prima visita è gratuita e senza impegno. Prenotala oggi: siamo disponibili tutti i giorni feriali.</p>
+                    <a href="tel:+390950000000" class="phone-huge">
+                        <i class="fas fa-phone"></i> 095 000 00 00
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chi siamo -->
+        <section class="section section-soft" id="chi-siamo">
+            <div class="container about-grid">
+                <div class="about-visual">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="about-content">
+                    <span class="section-eyebrow" style="justify-content:flex-start;">Chi siamo</span>
+                    <h2>Uno studio moderno, un approccio personale.</h2>
+                    <p>
+                        Dal 1998 lo Studio Sorriso è un punto di riferimento a Catania per l'odontoiatria
+                        specialistica. Il nostro impegno è offrire cure di eccellenza in un ambiente
+                        accogliente, con tecnologie all'avanguardia e un percorso di cura trasparente.
+                    </p>
+                    <p>
+                        Il nostro <strong>direttore sanitario</strong>, Dr. Marco Rossi, guida un'équipe
+                        multidisciplinare di 8 specialisti che collaborano ogni giorno per prendersi cura
+                        della salute orale di adulti e bambini.
+                    </p>
+
+                    <div class="about-stats">
+                        <div>
+                            <div class="about-stat-num">8</div>
+                            <div class="about-stat-label">Specialisti in équipe</div>
                         </div>
                         <div>
-                            <h2 class="clinic-brand-name">Studio Dentistico Sorriso</h2>
-                            <p class="clinic-brand-tagline">Odontoiatria specialistica &middot; dal 1998</p>
+                            <div class="about-stat-num">15k+</div>
+                            <div class="about-stat-label">Pazienti soddisfatti</div>
                         </div>
-                        <div class="clinic-header-meta">
-                            <span><i class="fas fa-phone"></i> +39 095 000 00 00</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Via Etnea 123, Catania</span>
-                            <span><i class="fas fa-clock"></i> Lun&ndash;Ven 9:00&ndash;19:00</span>
-                        </div>
-                    </header>
-
-                    <!-- Hero -->
-                    <section class="clinic-hero">
                         <div>
-                            <span class="clinic-badge">
-                                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> Demo AI Assistant
-                            </span>
-                            <h1>Il nostro listino prestazioni</h1>
-                            <p>
-                                Trasparenza prima di tutto. Consulta il costo di ciascun trattamento e, se hai domande,
-                                parla con il nostro <strong>assistente virtuale</strong> in fondo alla pagina:
-                                risponde su prestazioni, prezzi e disponibilit&agrave; degli appuntamenti.
-                            </p>
+                            <div class="about-stat-num">98%</div>
+                            <div class="about-stat-label">Successo implantare</div>
                         </div>
-                        <div class="clinic-hero-visual">
-                            <i class="fas fa-teeth"></i>
-                        </div>
-                    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Features -->
-                    <section class="clinic-features">
-                        <div class="clinic-feature">
-                            <i class="fas fa-user-md"></i>
-                            <div>
-                                <h4>&Eacute;quipe specializzata</h4>
-                                <p>Odontoiatri, igienisti e chirurghi maxillo-facciali.</p>
-                            </div>
-                        </div>
-                        <div class="clinic-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <h4>Materiali certificati</h4>
-                                <p>Impianti in titanio grado 4 e ceramiche di ultima generazione.</p>
-                            </div>
-                        </div>
-                        <div class="clinic-feature">
-                            <i class="fas fa-credit-card"></i>
-                            <div>
-                                <h4>Pagamento rateale</h4>
-                                <p>Finanziamento a tasso zero fino a 24 mesi.</p>
-                            </div>
-                        </div>
-                        <div class="clinic-feature">
-                            <i class="fas fa-heart"></i>
-                            <div>
-                                <h4>Prima visita gratuita</h4>
-                                <p>Diagnosi, panoramica e piano di cura senza impegno.</p>
-                            </div>
-                        </div>
-                    </section>
+        <!-- Team -->
+        <section class="section" id="team">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Il team</span>
+                    <h2 class="section-title">I nostri specialisti</h2>
+                    <p class="section-lead">
+                        Ogni membro del nostro team è un professionista qualificato con specializzazioni universitarie
+                        e formazione internazionale continua.
+                    </p>
+                </div>
 
-                    <!-- Igiene & Conservativa -->
-                    <section class="clinic-category">
-                        <div class="clinic-category-header">
-                            <div class="clinic-category-icon"><i class="fas fa-tooth"></i></div>
-                            <div>
-                                <h2>Igiene, Prevenzione e Conservativa</h2>
-                                <p class="clinic-category-sub">Visite di controllo, pulizia dentale e cura della carie</p>
-                            </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">MR</div>
+                        <div class="team-info">
+                            <h4>Dr. Marco Rossi</h4>
+                            <div class="team-role">Direttore sanitario</div>
+                            <p class="team-spec">Implantologia avanzata e chirurgia orale. Iscritto Albo Odontoiatri CT n. 1234.</p>
                         </div>
-                        <table class="clinic-table">
-                            <thead>
-                                <tr>
-                                    <th>Prestazione</th>
-                                    <th>Descrizione</th>
-                                    <th class="clinic-price">Costo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="clinic-service">Prima visita e diagnosi</td>
-                                    <td>Visita di controllo completa con piano di trattamento personalizzato.</td>
-                                    <td class="clinic-price free">Gratuita</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Igiene professionale</td>
-                                    <td>Ablazione del tartaro con ultrasuoni e lucidatura.</td>
-                                    <td class="clinic-price">&euro; 80</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Sbiancamento professionale</td>
-                                    <td>Trattamento in studio con gel a base di perossido.</td>
-                                    <td class="clinic-price">&euro; 280</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Sigillatura dei solchi</td>
-                                    <td>Prevenzione della carie per pazienti pediatrici (per dente).</td>
-                                    <td class="clinic-price">&euro; 40</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Otturazione in composito</td>
-                                    <td>Ricostruzione estetica in composito fotopolimerizzabile.</td>
-                                    <td class="clinic-price">&euro; 90 &ndash; 150</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Devitalizzazione (endodonzia)</td>
-                                    <td>Cura canalare monoradicolata o pluriradicolata.</td>
-                                    <td class="clinic-price">&euro; 220 &ndash; 380</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <!-- Chirurgia & Implantologia -->
-                    <section class="clinic-category">
-                        <div class="clinic-category-header">
-                            <div class="clinic-category-icon"><i class="fas fa-user-md"></i></div>
-                            <div>
-                                <h2>Chirurgia e Implantologia</h2>
-                                <p class="clinic-category-sub">Estrazioni, impianti singoli e riabilitazioni complete</p>
-                            </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar v2">LB</div>
+                        <div class="team-info">
+                            <h4>Dr.ssa Laura Bianchi</h4>
+                            <div class="team-role">Ortodonzia</div>
+                            <p class="team-spec">Ortodonzia intercettiva e Invisalign. Certified Diamond Provider.</p>
                         </div>
-                        <table class="clinic-table">
-                            <thead>
-                                <tr>
-                                    <th>Prestazione</th>
-                                    <th>Descrizione</th>
-                                    <th class="clinic-price">Costo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="clinic-service">Estrazione semplice</td>
-                                    <td>Estrazione dentale non chirurgica.</td>
-                                    <td class="clinic-price">&euro; 90</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Estrazione dente del giudizio</td>
-                                    <td>Estrazione chirurgica di ottavo incluso o semi-incluso.</td>
-                                    <td class="clinic-price">&euro; 200 &ndash; 350</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Impianto singolo</td>
-                                    <td>Impianto in titanio con chirurgia guidata e corona provvisoria.</td>
-                                    <td class="clinic-price">&euro; 1.100</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Corona su impianto</td>
-                                    <td>Corona definitiva in zirconia-ceramica.</td>
-                                    <td class="clinic-price">&euro; 750</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">All-on-Four (per arcata)</td>
-                                    <td>Riabilitazione completa dell'arcata su 4 impianti.</td>
-                                    <td class="clinic-price">&euro; 7.500</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Rialzo del seno mascellare</td>
-                                    <td>Grande rialzo per implantologia posteriore.</td>
-                                    <td class="clinic-price">&euro; 1.200</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <!-- Ortodonzia -->
-                    <section class="clinic-category">
-                        <div class="clinic-category-header">
-                            <div class="clinic-category-icon"><i class="fas fa-teeth-open"></i></div>
-                            <div>
-                                <h2>Ortodonzia</h2>
-                                <p class="clinic-category-sub">Apparecchi tradizionali e ortodonzia invisibile</p>
-                            </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar v3">GC</div>
+                        <div class="team-info">
+                            <h4>Dr. Giuseppe Costa</h4>
+                            <div class="team-role">Endodonzia</div>
+                            <p class="team-spec">Cure canalari con microscopio operatorio e ritrattamenti complessi.</p>
                         </div>
-                        <table class="clinic-table">
-                            <thead>
-                                <tr>
-                                    <th>Prestazione</th>
-                                    <th>Descrizione</th>
-                                    <th class="clinic-price">Costo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="clinic-service">Consulenza ortodontica</td>
-                                    <td>Valutazione iniziale e studio del caso.</td>
-                                    <td class="clinic-price">&euro; 60</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Apparecchio mobile</td>
-                                    <td>Trattamento intercettivo per pazienti in et&agrave; evolutiva.</td>
-                                    <td class="clinic-price">&euro; 900</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Apparecchio fisso (per arcata)</td>
-                                    <td>Ortodonzia tradizionale con brackets in metallo o ceramica.</td>
-                                    <td class="clinic-price">&euro; 1.800 &ndash; 2.400</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Ortodonzia invisibile (Invisalign)</td>
-                                    <td>Allineatori trasparenti su misura, ciclo completo di trattamento.</td>
-                                    <td class="clinic-price">&euro; 3.500 &ndash; 4.800</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Contenzione post-trattamento</td>
-                                    <td>Splint o retainer fisso/rimovibile.</td>
-                                    <td class="clinic-price">&euro; 250</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <!-- Protesi & Estetica -->
-                    <section class="clinic-category">
-                        <div class="clinic-category-header">
-                            <div class="clinic-category-icon"><i class="fas fa-smile"></i></div>
-                            <div>
-                                <h2>Protesi ed Estetica</h2>
-                                <p class="clinic-category-sub">Corone, ponti, faccette e riabilitazioni protesiche</p>
-                            </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar v4">SF</div>
+                        <div class="team-info">
+                            <h4>Dr.ssa Sofia Ferrara</h4>
+                            <div class="team-role">Pedodonzia</div>
+                            <p class="team-spec">Odontoiatria infantile con approccio ludico e prevenzione precoce.</p>
                         </div>
-                        <table class="clinic-table">
-                            <thead>
-                                <tr>
-                                    <th>Prestazione</th>
-                                    <th>Descrizione</th>
-                                    <th class="clinic-price">Costo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="clinic-service">Corona in zirconia-ceramica</td>
-                                    <td>Corona estetica su dente naturale.</td>
-                                    <td class="clinic-price">&euro; 700</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Ponte in zirconia (3 elementi)</td>
-                                    <td>Riabilitazione fissa per sostituzione di un elemento mancante.</td>
-                                    <td class="clinic-price">&euro; 1.900</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Faccetta dentale</td>
-                                    <td>Faccetta in ceramica ultra-sottile per estetica del sorriso.</td>
-                                    <td class="clinic-price">&euro; 650</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Protesi mobile totale (per arcata)</td>
-                                    <td>Dentiera completa in resina con denti in ceramica.</td>
-                                    <td class="clinic-price">&euro; 1.400</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Protesi scheletrata</td>
-                                    <td>Protesi parziale con struttura in lega e ganci di ritenzione.</td>
-                                    <td class="clinic-price">&euro; 1.100</td>
-                                </tr>
-                                <tr>
-                                    <td class="clinic-service">Bite notturno</td>
-                                    <td>Splint occlusale per bruxismo e disordini temporo-mandibolari.</td>
-                                    <td class="clinic-price">&euro; 220</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Info banner -->
-                    <div class="clinic-info">
-                        <i class="fas fa-info-circle"></i>
+        <!-- Listino -->
+        <section class="section section-blue" id="listino">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Listino prestazioni</span>
+                    <h2 class="section-title">Trasparenza sui costi</h2>
+                    <p class="section-lead">
+                        Nessuna sorpresa: consulta i prezzi di ogni trattamento.
+                        Le tariffe sono valide fino al 31/12/2026 e includono materiali e follow-up post-operatorio.
+                    </p>
+                </div>
+
+                <div class="pricing-category">
+                    <div class="pricing-category-header">
+                        <div class="pricing-category-icon"><i class="fas fa-tooth"></i></div>
                         <div>
-                            <strong>Nota importante.</strong>
-                            I prezzi indicati sono a scopo dimostrativo e servono come knowledge base per l'agente AI di
-                            questa demo. Non rappresentano il listino di uno studio reale.
-                            Le tariffe effettive possono variare in base alla complessit&agrave; del caso clinico.
-                            &Egrave; disponibile pagamento rateale a tasso zero.
+                            <h3>Igiene, Prevenzione e Conservativa</h3>
+                            <p class="pricing-category-sub">Visite di controllo, pulizia dentale e cura della carie</p>
+                        </div>
+                    </div>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Prestazione</th><th>Descrizione</th><th class="price-col">Costo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="service-name">Prima visita e diagnosi</td><td>Visita di controllo completa con piano di trattamento personalizzato.</td><td class="price-col free">Gratuita</td></tr>
+                            <tr><td class="service-name">Igiene professionale</td><td>Ablazione del tartaro con ultrasuoni e lucidatura.</td><td class="price-col">€ 80</td></tr>
+                            <tr><td class="service-name">Sbiancamento professionale</td><td>Trattamento in studio con gel a base di perossido.</td><td class="price-col">€ 280</td></tr>
+                            <tr><td class="service-name">Sigillatura dei solchi</td><td>Prevenzione della carie per pazienti pediatrici (per dente).</td><td class="price-col">€ 40</td></tr>
+                            <tr><td class="service-name">Otturazione in composito</td><td>Ricostruzione estetica in composito fotopolimerizzabile.</td><td class="price-col">€ 90 – 150</td></tr>
+                            <tr><td class="service-name">Devitalizzazione (endodonzia)</td><td>Cura canalare monoradicolata o pluriradicolata.</td><td class="price-col">€ 220 – 380</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pricing-category">
+                    <div class="pricing-category-header">
+                        <div class="pricing-category-icon"><i class="fas fa-user-md"></i></div>
+                        <div>
+                            <h3>Chirurgia e Implantologia</h3>
+                            <p class="pricing-category-sub">Estrazioni, impianti singoli e riabilitazioni complete</p>
+                        </div>
+                    </div>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Prestazione</th><th>Descrizione</th><th class="price-col">Costo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="service-name">Estrazione semplice</td><td>Estrazione dentale non chirurgica.</td><td class="price-col">€ 90</td></tr>
+                            <tr><td class="service-name">Estrazione dente del giudizio</td><td>Estrazione chirurgica di ottavo incluso o semi-incluso.</td><td class="price-col">€ 200 – 350</td></tr>
+                            <tr><td class="service-name">Impianto singolo</td><td>Impianto in titanio con chirurgia guidata e corona provvisoria.</td><td class="price-col">€ 1.100</td></tr>
+                            <tr><td class="service-name">Corona su impianto</td><td>Corona definitiva in zirconia-ceramica.</td><td class="price-col">€ 750</td></tr>
+                            <tr><td class="service-name">All-on-Four (per arcata)</td><td>Riabilitazione completa dell'arcata su 4 impianti.</td><td class="price-col">€ 7.500</td></tr>
+                            <tr><td class="service-name">Rialzo del seno mascellare</td><td>Grande rialzo per implantologia posteriore.</td><td class="price-col">€ 1.200</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pricing-category">
+                    <div class="pricing-category-header">
+                        <div class="pricing-category-icon"><i class="fas fa-teeth-open"></i></div>
+                        <div>
+                            <h3>Ortodonzia</h3>
+                            <p class="pricing-category-sub">Apparecchi tradizionali e ortodonzia invisibile</p>
+                        </div>
+                    </div>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Prestazione</th><th>Descrizione</th><th class="price-col">Costo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="service-name">Consulenza ortodontica</td><td>Valutazione iniziale e studio del caso.</td><td class="price-col">€ 60</td></tr>
+                            <tr><td class="service-name">Apparecchio mobile</td><td>Trattamento intercettivo per pazienti in età evolutiva.</td><td class="price-col">€ 900</td></tr>
+                            <tr><td class="service-name">Apparecchio fisso (per arcata)</td><td>Ortodonzia tradizionale con brackets in metallo o ceramica.</td><td class="price-col">€ 1.800 – 2.400</td></tr>
+                            <tr><td class="service-name">Ortodonzia invisibile (Invisalign)</td><td>Allineatori trasparenti su misura, ciclo completo di trattamento.</td><td class="price-col">€ 3.500 – 4.800</td></tr>
+                            <tr><td class="service-name">Contenzione post-trattamento</td><td>Splint o retainer fisso/rimovibile.</td><td class="price-col">€ 250</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pricing-category">
+                    <div class="pricing-category-header">
+                        <div class="pricing-category-icon"><i class="fas fa-smile"></i></div>
+                        <div>
+                            <h3>Protesi ed Estetica</h3>
+                            <p class="pricing-category-sub">Corone, ponti, faccette e riabilitazioni protesiche</p>
+                        </div>
+                    </div>
+                    <table class="price-table">
+                        <thead>
+                            <tr><th>Prestazione</th><th>Descrizione</th><th class="price-col">Costo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="service-name">Corona in zirconia-ceramica</td><td>Corona estetica su dente naturale.</td><td class="price-col">€ 700</td></tr>
+                            <tr><td class="service-name">Ponte in zirconia (3 elementi)</td><td>Riabilitazione fissa per sostituzione di un elemento mancante.</td><td class="price-col">€ 1.900</td></tr>
+                            <tr><td class="service-name">Faccetta dentale</td><td>Faccetta in ceramica ultra-sottile per estetica del sorriso.</td><td class="price-col">€ 650</td></tr>
+                            <tr><td class="service-name">Protesi mobile totale (per arcata)</td><td>Dentiera completa in resina con denti in ceramica.</td><td class="price-col">€ 1.400</td></tr>
+                            <tr><td class="service-name">Protesi scheletrata</td><td>Protesi parziale con struttura in lega e ganci di ritenzione.</td><td class="price-col">€ 1.100</td></tr>
+                            <tr><td class="service-name">Bite notturno</td><td>Splint occlusale per bruxismo e disordini temporo-mandibolari.</td><td class="price-col">€ 220</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pricing-cta">
+                    <div class="pricing-cta-text">
+                        <h3>Preventivo personalizzato senza impegno</h3>
+                        <p>Ricevi in 24 ore un piano di cura dettagliato con opzioni di pagamento rateale.</p>
+                    </div>
+                    <a href="tel:+390950000000" class="btn btn-cta">
+                        <i class="fas fa-phone-volume"></i> Chiama Ora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonianze -->
+        <section class="section" id="testimonianze">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Le voci dei nostri pazienti</span>
+                    <h2 class="section-title">4.9 stelle su 342 recensioni Google</h2>
+                    <p class="section-lead">La fiducia dei nostri pazienti è la nostra certificazione più importante.</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            Ho fatto un impianto e sono rimasto senza parole. Zero dolore, staff gentilissimo
+                            e il Dr. Rossi ha spiegato ogni passaggio. Consigliatissimo.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">GS</div>
+                            <div>
+                                <div class="testimonial-name">Giovanni S.</div>
+                                <div class="testimonial-meta">Impianto singolo · Mar 2026</div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Voice Agent -->
-                    <section class="clinic-agent">
-                        <p class="ai-label">AI Dental Assistant &middot; Live Demo</p>
-                        <h2>Parla con il nostro assistente</h2>
-                        <p>
-                            Clicca sul widget qui sotto e chiedi informazioni sui trattamenti, i costi o la
-                            disponibilit&agrave;. L'agente risponde in tempo reale usando il listino sopra come knowledge
-                            base.
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            Ho scelto Invisalign per non sentirmi in imbarazzo al lavoro. La Dr.ssa Bianchi
+                            è stata bravissima, in 14 mesi denti perfetti. Ne è valsa la pena.
                         </p>
-                        <elevenlabs-convai agent-id="agent_8401kwq54j00fkvart23xyt7m2j3"></elevenlabs-convai>
-                    </section>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">FR</div>
+                            <div>
+                                <div class="testimonial-name">Francesca R.</div>
+                                <div class="testimonial-meta">Invisalign · Gen 2026</div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            Porto mia figlia di 6 anni. La Dr.ssa Ferrara è magica con i bambini: giochi,
+                            spiegazioni semplici, mai una lacrima. Grazie di cuore!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MC</div>
+                            <div>
+                                <div class="testimonial-name">Martina C.</div>
+                                <div class="testimonial-meta">Pedodonzia · Feb 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section-soft" id="faq">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Domande frequenti</span>
+                    <h2 class="section-title">Le risposte che cerchi</h2>
+                </div>
+
+                <div class="faq-list">
+                    <details class="faq-item" open>
+                        <summary>La prima visita è veramente gratuita?</summary>
+                        <div class="faq-item-body">
+                            Sì. La prima visita comprende un check-up completo, panoramica digitale se necessaria
+                            e un piano di trattamento personalizzato. Nessun impegno di procedere con le cure.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>È possibile pagare a rate?</summary>
+                        <div class="faq-item-body">
+                            Certo. Offriamo <strong>finanziamento a tasso zero fino a 24 mesi</strong> tramite
+                            i nostri partner finanziari. La richiesta si valuta in 5 minuti direttamente in studio.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Che garanzie offrite su impianti e protesi?</summary>
+                        <div class="faq-item-body">
+                            Tutti gli impianti hanno una <strong>garanzia di 5 anni</strong> su rottura o fallimento
+                            dell'osteointegrazione. Le protesi definitive sono coperte da garanzia di 2 anni sui
+                            materiali e sulla manifattura.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Trattate anche i bambini?</summary>
+                        <div class="faq-item-body">
+                            Sì, abbiamo un reparto di pedodonzia dedicato con la Dr.ssa Sofia Ferrara,
+                            specialista in odontoiatria infantile. Utilizziamo un approccio ludico per
+                            evitare paure e traumi ai piccoli pazienti.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Fate anche urgenze e visite fuori orario?</summary>
+                        <div class="faq-item-body">
+                            Per le urgenze contattare il numero <strong>+39 095 000 00 00</strong>.
+                            Garantiamo un appuntamento entro 24 ore per emergenze dolorose o traumi dentali.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Come raggiungervi con i mezzi pubblici?</summary>
+                        <div class="faq-item-body">
+                            Siamo in Via Etnea 123, a 5 minuti a piedi dalla stazione metropolitana
+                            di Piazza Stesicoro. Autobus AMT linee 429, 449 e BRT1 fermano a 100 metri.
+                            Parcheggio convenzionato a 50 metri.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big call banner #2 -->
+        <section class="call-banner">
+            <div class="container call-banner-inner">
+                <div class="call-banner-icon">
+                    <i class="fas fa-phone-volume"></i>
+                </div>
+                <div class="call-banner-text">
+                    <h2>Pronto a iniziare?</h2>
+                    <p>Chiamaci ora e prenota la tua prima visita gratuita. Ti risponde una persona vera in meno di 20 secondi.</p>
+                    <a href="tel:+390950000000" class="phone-huge">
+                        <i class="fas fa-phone"></i> 095 000 00 00
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contatti -->
+        <section class="section" id="contatti">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Contattaci</span>
+                    <h2 class="section-title">Prenota la tua visita</h2>
+                    <p class="section-lead">
+                        Compila il modulo o chiamaci direttamente. Ti ricontattiamo entro 2 ore lavorative.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div>
+                        <div class="contact-info" style="margin-bottom: 1.5rem;">
+                            <h3>Dove siamo</h3>
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <div class="contact-item-label">Indirizzo</div>
+                                    <div class="contact-item-value">Via Etnea 123, 95124 Catania (CT)</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                                <div>
+                                    <div class="contact-item-label">Telefono</div>
+                                    <div class="contact-item-value"><a href="tel:+390950000000">+39 095 000 00 00</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <div class="contact-item-label">Email</div>
+                                    <div class="contact-item-value"><a href="mailto:info@studiosorriso.it">info@studiosorriso.it</a></div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+                                <div>
+                                    <div class="contact-item-label">Orari di apertura</div>
+                                    <div class="contact-item-value">Lun–Ven 9:00–19:00<br>Sabato 9:00–13:00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h4>Via Etnea 123, Catania</h4>
+                            <p>A 5 minuti dalla metro Stesicoro · Parcheggio convenzionato a 50 m</p>
+                        </div>
+                    </div>
+
+                    <form class="booking-form" onsubmit="event.preventDefault(); alert('Demo: nessuna richiesta è stata inviata realmente.');">
+                        <h3 style="margin-bottom: 1.5rem;">Richiedi appuntamento</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="fname">Nome *</label>
+                                <input type="text" id="fname" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lname">Cognome *</label>
+                                <input type="text" id="lname" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Telefono *</label>
+                                <input type="tel" id="phone" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email *</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="service">Prestazione di interesse</label>
+                            <select id="service" class="form-select">
+                                <option>Prima visita gratuita</option>
+                                <option>Igiene professionale</option>
+                                <option>Implantologia</option>
+                                <option>Ortodonzia invisibile</option>
+                                <option>Sbiancamento</option>
+                                <option>Altro (specificare nel messaggio)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Messaggio (opzionale)</label>
+                            <textarea id="message" class="form-textarea" placeholder="Raccontaci di cosa hai bisogno..."></textarea>
+                        </div>
+
+                        <label class="form-check">
+                            <input type="checkbox" required>
+                            <span>Ho letto e accetto la <a href="#">privacy policy</a> e autorizzo il trattamento dei miei dati personali ai sensi del GDPR 679/2016.</span>
+                        </label>
+
+                        <button type="submit" class="btn btn-cta" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i> Invia richiesta
+                        </button>
+                        <p style="text-align: center; color: var(--c-muted); font-size: 0.8rem; margin-top: 1rem;">
+                            Risposta garantita entro 2 ore lavorative
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Agent -->
+        <section class="agent-section">
+            <div class="container">
+                <div class="agent-wrapper">
+                    <h2>Parla con il nostro assistente virtuale</h2>
+                    <p>
+                        Clicca sul widget qui sotto e chiedi informazioni su trattamenti, costi e disponibilità.
+                        Risponde in tempo reale, 24 ore su 24, in linguaggio naturale.
+                    </p>
+                    <elevenlabs-convai agent-id="agent_8401kwq54j00fkvart23xyt7m2j3"></elevenlabs-convai>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="dental-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <div class="brand-logo"><i class="fas fa-tooth"></i></div>
+                        <div>
+                            <div class="footer-brand-name">Studio Sorriso</div>
+                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Odontoiatria specialistica</div>
+                        </div>
+                    </div>
+                    <p>Da oltre 25 anni ci prendiamo cura del sorriso delle famiglie di Catania e provincia con professionalità e passione.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Servizi</h4>
+                    <ul>
+                        <li><a href="#servizi">Igiene e prevenzione</a></li>
+                        <li><a href="#servizi">Implantologia</a></li>
+                        <li><a href="#servizi">Ortodonzia invisibile</a></li>
+                        <li><a href="#servizi">Estetica dentale</a></li>
+                        <li><a href="#servizi">Pedodonzia</a></li>
+                        <li><a href="#servizi">Diagnostica 3D</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Link utili</h4>
+                    <ul>
+                        <li><a href="#chi-siamo">Chi siamo</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#listino">Listino</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#testimonianze">Recensioni</a></li>
+                        <li><a href="#contatti">Contatti</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i>&nbsp; Via Etnea 123, Catania</li>
+                        <li><i class="fas fa-phone"></i>&nbsp; <a href="tel:+390950000000">+39 095 000 00 00</a></li>
+                        <li><i class="fas fa-envelope"></i>&nbsp; <a href="mailto:info@studiosorriso.it">info@studiosorriso.it</a></li>
+                        <li><i class="fas fa-clock"></i>&nbsp; Lun–Ven 9:00–19:00</li>
+                        <li><i class="fas fa-clock"></i>&nbsp; Sab 9:00–13:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <div>
+                    Studio Dentistico Sorriso S.r.l. · P.IVA 01234567890 · REA CT-123456<br>
+                    Direttore Sanitario: Dr. Marco Rossi · Iscr. Albo Odontoiatri CT n. 1234<br>
+                    Aut. San. n. 456/2005 - Comune di Catania · © 2026 Tutti i diritti riservati
+                </div>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Note legali</a>
+                    <a href="#">Trasparenza tariffaria</a>
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer class="footer">
-        <p>Designed & Built by Valerio Francesco Puglisi</p>
-        <p class="copyright">© 2026 ALL RIGHTS RESERVED - AI.ARCHITECT v3.0</p>
     </footer>
 
-    <script src="../script.js"></script>
+    <!-- Mobile floating call button -->
+    <a href="tel:+390950000000" class="mobile-call" aria-label="Chiama ora">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- Cookie banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <h5>🍪 Utilizziamo i cookie</h5>
+        <p>Utilizziamo cookie tecnici e di analytics per migliorare la tua esperienza. Puoi accettare, rifiutare o personalizzare la tua scelta.</p>
+        <div class="cookie-actions">
+            <button class="btn btn-primary" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Accetta tutti</button>
+            <button class="btn btn-outline" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Solo essenziali</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            const open = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', open);
+        });
+        navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }));
+
+        // Sticky nav shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
+        });
+    </script>
+
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 
