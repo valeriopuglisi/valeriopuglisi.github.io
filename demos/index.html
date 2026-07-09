@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Live AI agent demos by Valerio Puglisi - Voice and chat agents for verticals like dental clinics, hospitality, and more.">
+    <title>Demos | Valerio Puglisi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body>
+    <canvas id="neural-canvas"></canvas>
+
+    <nav class="navbar gloss">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">VP_</span><span class="logo-text">AI.ARCHITECT</span>
+            </a>
+            <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../about.html" class="nav-link">01. About</a></li>
+                <li><a href="../experience.html" class="nav-link">02. Experience</a></li>
+                <li><a href="../projects.html" class="nav-link">03. Projects</a></li>
+                <li><a href="index.html" class="nav-link active">04. Demos</a></li>
+                <li><a href="../blog/index.html" class="nav-link">05. Blog</a></li>
+                <li><a href="../index.html#contact" class="nav-link btn-primary">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="hero-title fade-in-up">Live AI Agent Demos.</h1>
+                    <div class="section-line"></div>
+                </div>
+
+                <p class="fade-in-up delay-1" style="max-width: 780px; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Vertical AI agents built on top of my Voicebot Wizard and multi-agent frameworks.
+                    Each demo simulates a real business scenario — talk to the agent directly in the browser
+                    and see how conversational AI handles bookings, FAQs, and customer support.
+                </p>
+
+                <!-- Healthcare & Wellness -->
+                <div class="section-header" style="margin-top: 3rem;">
+                    <h2 class="section-title"><span class="section-number">01.</span> Healthcare & Wellness</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="demos-grid fade-in-up delay-1">
+                    <a href="dental.html" class="demo-card glass-card">
+                        <i class="fas fa-tooth demo-icon"></i>
+                        <h3 class="demo-title">Dental Clinic Assistant</h3>
+                        <p class="demo-desc">
+                            Voice agent for a dental practice: pricing information, service catalog,
+                            appointment triage and general FAQ.
+                        </p>
+                        <span class="demo-tag">// Live Demo</span>
+                    </a>
+                </div>
+
+                <!-- Hospitality (coming soon) -->
+                <div class="section-header" style="margin-top: 3rem;">
+                    <h2 class="section-title"><span class="section-number">02.</span> Hospitality</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="demos-grid fade-in-up delay-2">
+                    <div class="demo-card glass-card coming-soon">
+                        <i class="fas fa-hotel demo-icon"></i>
+                        <h3 class="demo-title">Hotel Concierge</h3>
+                        <p class="demo-desc">
+                            Multilingual concierge for room bookings, local recommendations
+                            and guest requests.
+                        </p>
+                        <span class="demo-tag">// Coming Soon</span>
+                    </div>
+
+                    <div class="demo-card glass-card coming-soon">
+                        <i class="fas fa-utensils demo-icon"></i>
+                        <h3 class="demo-title">Restaurant Reservations</h3>
+                        <p class="demo-desc">
+                            Table booking, menu information and dietary questions handled
+                            end-to-end by voice.
+                        </p>
+                        <span class="demo-tag">// Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- Retail & Services (coming soon) -->
+                <div class="section-header" style="margin-top: 3rem;">
+                    <h2 class="section-title"><span class="section-number">03.</span> Retail & Professional Services</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="demos-grid fade-in-up delay-3">
+                    <div class="demo-card glass-card coming-soon">
+                        <i class="fas fa-scissors demo-icon"></i>
+                        <h3 class="demo-title">Beauty & Barber Booking</h3>
+                        <p class="demo-desc">
+                            Appointment scheduling with staff selection and service pricing.
+                        </p>
+                        <span class="demo-tag">// Coming Soon</span>
+                    </div>
+
+                    <div class="demo-card glass-card coming-soon">
+                        <i class="fas fa-briefcase demo-icon"></i>
+                        <h3 class="demo-title">Legal / Accounting Intake</h3>
+                        <p class="demo-desc">
+                            First-contact intake, quote requests and appointment routing.
+                        </p>
+                        <span class="demo-tag">// Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Designed & Built by Valerio Francesco Puglisi</p>
+        <p class="copyright">© 2026 ALL RIGHTS RESERVED - AI.ARCHITECT v3.0</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

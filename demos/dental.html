@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Demo AI Assistant per uno studio dentistico - listino prestazioni e agente vocale conversazionale.">
+    <title>Studio Dentistico Sorriso · Demo AI | Valerio Puglisi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body>
+    <canvas id="neural-canvas"></canvas>
+
+    <nav class="navbar gloss">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">VP_</span><span class="logo-text">AI.ARCHITECT</span>
+            </a>
+            <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../about.html" class="nav-link">01. About</a></li>
+                <li><a href="../experience.html" class="nav-link">02. Experience</a></li>
+                <li><a href="../projects.html" class="nav-link">03. Projects</a></li>
+                <li><a href="index.html" class="nav-link active">04. Demos</a></li>
+                <li><a href="../blog/index.html" class="nav-link">05. Blog</a></li>
+                <li><a href="../index.html#contact" class="nav-link btn-primary">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-content">
+        <div class="container">
+            <!-- Clinic-styled demo container -->
+            <div class="clinic-theme">
+                <div class="clinic-container">
+
+                    <!-- Clinic Header -->
+                    <header class="clinic-header">
+                        <div class="clinic-logo">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <div>
+                            <h2 class="clinic-brand-name">Studio Dentistico Sorriso</h2>
+                            <p class="clinic-brand-tagline">Odontoiatria specialistica &middot; dal 1998</p>
+                        </div>
+                        <div class="clinic-header-meta">
+                            <span><i class="fas fa-phone"></i> +39 095 000 00 00</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Via Etnea 123, Catania</span>
+                            <span><i class="fas fa-clock"></i> Lun&ndash;Ven 9:00&ndash;19:00</span>
+                        </div>
+                    </header>
+
+                    <!-- Hero -->
+                    <section class="clinic-hero">
+                        <div>
+                            <span class="clinic-badge">
+                                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> Demo AI Assistant
+                            </span>
+                            <h1>Il nostro listino prestazioni</h1>
+                            <p>
+                                Trasparenza prima di tutto. Consulta il costo di ciascun trattamento e, se hai domande,
+                                parla con il nostro <strong>assistente virtuale</strong> in fondo alla pagina:
+                                risponde su prestazioni, prezzi e disponibilit&agrave; degli appuntamenti.
+                            </p>
+                        </div>
+                        <div class="clinic-hero-visual">
+                            <i class="fas fa-teeth"></i>
+                        </div>
+                    </section>
+
+                    <!-- Features -->
+                    <section class="clinic-features">
+                        <div class="clinic-feature">
+                            <i class="fas fa-user-md"></i>
+                            <div>
+                                <h4>&Eacute;quipe specializzata</h4>
+                                <p>Odontoiatri, igienisti e chirurghi maxillo-facciali.</p>
+                            </div>
+                        </div>
+                        <div class="clinic-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Materiali certificati</h4>
+                                <p>Impianti in titanio grado 4 e ceramiche di ultima generazione.</p>
+                            </div>
+                        </div>
+                        <div class="clinic-feature">
+                            <i class="fas fa-credit-card"></i>
+                            <div>
+                                <h4>Pagamento rateale</h4>
+                                <p>Finanziamento a tasso zero fino a 24 mesi.</p>
+                            </div>
+                        </div>
+                        <div class="clinic-feature">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>Prima visita gratuita</h4>
+                                <p>Diagnosi, panoramica e piano di cura senza impegno.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Igiene & Conservativa -->
+                    <section class="clinic-category">
+                        <div class="clinic-category-header">
+                            <div class="clinic-category-icon"><i class="fas fa-tooth"></i></div>
+                            <div>
+                                <h2>Igiene, Prevenzione e Conservativa</h2>
+                                <p class="clinic-category-sub">Visite di controllo, pulizia dentale e cura della carie</p>
+                            </div>
+                        </div>
+                        <table class="clinic-table">
+                            <thead>
+                                <tr>
+                                    <th>Prestazione</th>
+                                    <th>Descrizione</th>
+                                    <th class="clinic-price">Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="clinic-service">Prima visita e diagnosi</td>
+                                    <td>Visita di controllo completa con piano di trattamento personalizzato.</td>
+                                    <td class="clinic-price free">Gratuita</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Igiene professionale</td>
+                                    <td>Ablazione del tartaro con ultrasuoni e lucidatura.</td>
+                                    <td class="clinic-price">&euro; 80</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Sbiancamento professionale</td>
+                                    <td>Trattamento in studio con gel a base di perossido.</td>
+                                    <td class="clinic-price">&euro; 280</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Sigillatura dei solchi</td>
+                                    <td>Prevenzione della carie per pazienti pediatrici (per dente).</td>
+                                    <td class="clinic-price">&euro; 40</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Otturazione in composito</td>
+                                    <td>Ricostruzione estetica in composito fotopolimerizzabile.</td>
+                                    <td class="clinic-price">&euro; 90 &ndash; 150</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Devitalizzazione (endodonzia)</td>
+                                    <td>Cura canalare monoradicolata o pluriradicolata.</td>
+                                    <td class="clinic-price">&euro; 220 &ndash; 380</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- Chirurgia & Implantologia -->
+                    <section class="clinic-category">
+                        <div class="clinic-category-header">
+                            <div class="clinic-category-icon"><i class="fas fa-user-md"></i></div>
+                            <div>
+                                <h2>Chirurgia e Implantologia</h2>
+                                <p class="clinic-category-sub">Estrazioni, impianti singoli e riabilitazioni complete</p>
+                            </div>
+                        </div>
+                        <table class="clinic-table">
+                            <thead>
+                                <tr>
+                                    <th>Prestazione</th>
+                                    <th>Descrizione</th>
+                                    <th class="clinic-price">Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="clinic-service">Estrazione semplice</td>
+                                    <td>Estrazione dentale non chirurgica.</td>
+                                    <td class="clinic-price">&euro; 90</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Estrazione dente del giudizio</td>
+                                    <td>Estrazione chirurgica di ottavo incluso o semi-incluso.</td>
+                                    <td class="clinic-price">&euro; 200 &ndash; 350</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Impianto singolo</td>
+                                    <td>Impianto in titanio con chirurgia guidata e corona provvisoria.</td>
+                                    <td class="clinic-price">&euro; 1.100</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Corona su impianto</td>
+                                    <td>Corona definitiva in zirconia-ceramica.</td>
+                                    <td class="clinic-price">&euro; 750</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">All-on-Four (per arcata)</td>
+                                    <td>Riabilitazione completa dell'arcata su 4 impianti.</td>
+                                    <td class="clinic-price">&euro; 7.500</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Rialzo del seno mascellare</td>
+                                    <td>Grande rialzo per implantologia posteriore.</td>
+                                    <td class="clinic-price">&euro; 1.200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- Ortodonzia -->
+                    <section class="clinic-category">
+                        <div class="clinic-category-header">
+                            <div class="clinic-category-icon"><i class="fas fa-teeth-open"></i></div>
+                            <div>
+                                <h2>Ortodonzia</h2>
+                                <p class="clinic-category-sub">Apparecchi tradizionali e ortodonzia invisibile</p>
+                            </div>
+                        </div>
+                        <table class="clinic-table">
+                            <thead>
+                                <tr>
+                                    <th>Prestazione</th>
+                                    <th>Descrizione</th>
+                                    <th class="clinic-price">Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="clinic-service">Consulenza ortodontica</td>
+                                    <td>Valutazione iniziale e studio del caso.</td>
+                                    <td class="clinic-price">&euro; 60</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Apparecchio mobile</td>
+                                    <td>Trattamento intercettivo per pazienti in et&agrave; evolutiva.</td>
+                                    <td class="clinic-price">&euro; 900</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Apparecchio fisso (per arcata)</td>
+                                    <td>Ortodonzia tradizionale con brackets in metallo o ceramica.</td>
+                                    <td class="clinic-price">&euro; 1.800 &ndash; 2.400</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Ortodonzia invisibile (Invisalign)</td>
+                                    <td>Allineatori trasparenti su misura, ciclo completo di trattamento.</td>
+                                    <td class="clinic-price">&euro; 3.500 &ndash; 4.800</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Contenzione post-trattamento</td>
+                                    <td>Splint o retainer fisso/rimovibile.</td>
+                                    <td class="clinic-price">&euro; 250</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- Protesi & Estetica -->
+                    <section class="clinic-category">
+                        <div class="clinic-category-header">
+                            <div class="clinic-category-icon"><i class="fas fa-smile"></i></div>
+                            <div>
+                                <h2>Protesi ed Estetica</h2>
+                                <p class="clinic-category-sub">Corone, ponti, faccette e riabilitazioni protesiche</p>
+                            </div>
+                        </div>
+                        <table class="clinic-table">
+                            <thead>
+                                <tr>
+                                    <th>Prestazione</th>
+                                    <th>Descrizione</th>
+                                    <th class="clinic-price">Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="clinic-service">Corona in zirconia-ceramica</td>
+                                    <td>Corona estetica su dente naturale.</td>
+                                    <td class="clinic-price">&euro; 700</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Ponte in zirconia (3 elementi)</td>
+                                    <td>Riabilitazione fissa per sostituzione di un elemento mancante.</td>
+                                    <td class="clinic-price">&euro; 1.900</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Faccetta dentale</td>
+                                    <td>Faccetta in ceramica ultra-sottile per estetica del sorriso.</td>
+                                    <td class="clinic-price">&euro; 650</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Protesi mobile totale (per arcata)</td>
+                                    <td>Dentiera completa in resina con denti in ceramica.</td>
+                                    <td class="clinic-price">&euro; 1.400</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Protesi scheletrata</td>
+                                    <td>Protesi parziale con struttura in lega e ganci di ritenzione.</td>
+                                    <td class="clinic-price">&euro; 1.100</td>
+                                </tr>
+                                <tr>
+                                    <td class="clinic-service">Bite notturno</td>
+                                    <td>Splint occlusale per bruxismo e disordini temporo-mandibolari.</td>
+                                    <td class="clinic-price">&euro; 220</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- Info banner -->
+                    <div class="clinic-info">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Nota importante.</strong>
+                            I prezzi indicati sono a scopo dimostrativo e servono come knowledge base per l'agente AI di
+                            questa demo. Non rappresentano il listino di uno studio reale.
+                            Le tariffe effettive possono variare in base alla complessit&agrave; del caso clinico.
+                            &Egrave; disponibile pagamento rateale a tasso zero.
+                        </div>
+                    </div>
+
+                    <!-- Voice Agent -->
+                    <section class="clinic-agent">
+                        <p class="ai-label">AI Dental Assistant &middot; Live Demo</p>
+                        <h2>Parla con il nostro assistente</h2>
+                        <p>
+                            Clicca sul widget qui sotto e chiedi informazioni sui trattamenti, i costi o la
+                            disponibilit&agrave;. L'agente risponde in tempo reale usando il listino sopra come knowledge
+                            base.
+                        </p>
+                        <elevenlabs-convai agent-id="agent_8401kwq54j00fkvart23xyt7m2j3"></elevenlabs-convai>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Designed & Built by Valerio Francesco Puglisi</p>
+        <p class="copyright">© 2026 ALL RIGHTS RESERVED - AI.ARCHITECT v3.0</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+
+</html>
