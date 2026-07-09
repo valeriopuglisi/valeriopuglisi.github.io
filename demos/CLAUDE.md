@@ -14,7 +14,15 @@ Each demo showcases a voice AI agent (ElevenLabs Convai) grounded on the demo's 
 2. **Own `<body>` scope class.** Use `<body class="<slug>-site">` so styles are namespaceable and cannot leak. Example: `body.dental-site`.
 3. **No portfolio navbar/footer** on a standalone demo. Replace them with the demo's own brand nav and footer. The only link back to the portfolio is a small discreet back-link (see `demos/dental.html`'s `.portfolio-back`).
 4. **Each demo has its own ElevenLabs agent-id.** They are not interchangeable. The homepage agent (`agent_5701k8n7bzyyfasb5nn7086zyt20`, "AI clone of Valerio") must never appear in a demo, and demo agent-ids must never appear on the portfolio.
-5. **Language matches the demo persona.** The dental demo is Italian (`lang="it"`); a demo targeted at another market should switch `lang`, meta, and copy accordingly.
+5. **Language matches the demo persona.** The default `lang` reflects the primary market of the demo (dental → `lang="it"`). For multi-language demos, load `<slug>.i18n.js` and mark every user-visible string with `data-i18n="key"` (or `data-i18n-attr="attr:key"` for attributes) — do NOT hardcode both languages side by side.
+
+## i18n pattern (see `dental.i18n.js`)
+
+- Dictionary is a single JSON object per locale under `dict[lang]`. Keep keys stable; refactor only when the whole language block changes.
+- The engine reads the target language from `?lang=` URL param first, then `localStorage`, then `navigator.language`, then falls back to the demo's default. Persist the user's choice in `localStorage` and reflect it in the URL (`history.replaceState`) — never full-reload.
+- Update `<html lang>`, `<meta name="description">`, `<meta property="og:locale">` and `<title>` on every language change (SEO enterprise).
+- Add `<link rel="alternate" hreflang="…">` tags for each supported locale in `<head>`.
+- The language switcher exposes `window.__setLang(lang)` and `window.__getLang()`. Use them from inline `onclick` (e.g. `onclick="window.__setLang('en')"`) and to branch runtime strings like alert texts.
 
 ## Enterprise checklist for a new demo
 

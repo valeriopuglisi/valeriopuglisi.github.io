@@ -256,6 +256,39 @@ body.dental-site::after {
 
 .topbar-actions a { color: rgba(255, 255, 255, 0.85); }
 
+/* Language switcher */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.15rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+}
+
+.lang-switch button {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-transform: uppercase;
+}
+
+.lang-switch button:hover { color: #fff; }
+
+.lang-switch button.active {
+    background: #fff;
+    color: var(--c-primary-dark);
+}
+
 /* Progressive hide of secondary topbar items when width is tight */
 @media (max-width: 1400px) {
     .topbar-meta a[href^="mailto"] { display: none; }
