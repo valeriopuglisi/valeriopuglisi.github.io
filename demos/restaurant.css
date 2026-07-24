@@ -1,38 +1,45 @@
 /* =========================================
-   Studio Dentistico Sorriso — Standalone Site
-   Enterprise-grade healthcare theme
+   Trattoria del Mare — Standalone Site
+   Enterprise-grade restaurant theme (warm: terracotta / gold / olive)
    ========================================= */
 
 :root {
-    --c-primary: #0369a1;
-    --c-primary-dark: #075985;
-    --c-primary-light: #e0f2fe;
-    --c-accent: #14b8a6;
-    --c-accent-dark: #0d9488;
-    --c-cta: #f97316;
-    --c-cta-dark: #ea580c;
-    --c-success: #10b981;
-    --c-warning: #f59e0b;
-    --c-bg: #ffffff;
-    --c-bg-soft: #f8fafc;
-    --c-bg-blue: #f0f9ff;
-    --c-border: #e2e8f0;
-    --c-text: #0f172a;
-    --c-text-soft: #475569;
-    --c-muted: #64748b;
+    --c-primary: #9a3412;
+    /* Terracotta 800 */
+    --c-primary-dark: #7c2d12;
+    --c-primary-light: #ffedd5;
+    --c-accent: #ca8a04;
+    /* Gold / ochre 600 */
+    --c-accent-dark: #a16207;
+    --c-cta: #c2410c;
+    /* Warm orange CTA */
+    --c-cta-dark: #9a3412;
+    --c-success: #4d7c0f;
+    /* Olive green */
+    --c-warning: #d97706;
+    --c-bg: #fffbf5;
+    /* Warm off-white */
+    --c-bg-soft: #faf3e8;
+    --c-bg-blue: #fdf6ec;
+    /* warm tint used where dental used blue */
+    --c-border: #ece0d1;
+    --c-text: #292219;
+    /* Warm near-black */
+    --c-text-soft: #57493a;
+    --c-muted: #8a7a68;
     --c-white: #ffffff;
 
-    --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
     --radius-sm: 8px;
     --radius: 12px;
     --radius-lg: 20px;
 
-    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-    --shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
-    --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.12);
-    --shadow-cta: 0 10px 30px rgba(249, 115, 22, 0.35);
+    --shadow-sm: 0 1px 2px rgba(41, 34, 25, 0.06);
+    --shadow: 0 4px 20px rgba(41, 34, 25, 0.10);
+    --shadow-lg: 0 20px 50px rgba(41, 34, 25, 0.16);
+    --shadow-cta: 0 10px 30px rgba(194, 65, 12, 0.32);
 
     --topbar-h: 40px;
     --nav-h: 72px;
@@ -51,7 +58,7 @@ html {
     scroll-padding-top: calc(var(--topbar-h) + var(--nav-h) + 20px);
 }
 
-body.dental-site {
+body.restaurant-site {
     font-family: var(--font-body);
     color: var(--c-text);
     background: var(--c-bg);
@@ -64,12 +71,12 @@ body.dental-site {
    sidebar that fights with it. */
 .ai-lane-label { display: none !important; }
 
-.dental-site img { max-width: 100%; display: block; }
+.restaurant-site img { max-width: 100%; display: block; }
 
-.dental-site h1,
-.dental-site h2,
-.dental-site h3,
-.dental-site h4 {
+.restaurant-site h1,
+.restaurant-site h2,
+.restaurant-site h3,
+.restaurant-site h4 {
     font-family: var(--font-heading);
     color: var(--c-text);
     letter-spacing: -0.015em;
@@ -77,15 +84,15 @@ body.dental-site {
     font-weight: 700;
 }
 
-.dental-site a {
+.restaurant-site a {
     color: var(--c-primary);
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.dental-site a:hover { color: var(--c-primary-dark); }
+.restaurant-site a:hover { color: var(--c-primary-dark); }
 
-.dental-site .container {
+.restaurant-site .container {
     width: 92%;
     max-width: 1200px;
     margin: 0 auto;
@@ -251,7 +258,7 @@ body.dental-site {
     justify-content: center;
     color: #fff;
     font-size: 1.3rem;
-    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.25);
+    box-shadow: 0 4px 12px rgba(154, 52, 18, 0.25);
 }
 
 .brand-name {
@@ -355,7 +362,7 @@ body.dental-site {
     color: #fff;
     background: var(--c-cta-dark);
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.45);
+    box-shadow: 0 15px 40px rgba(194, 65, 12, 0.45);
 }
 
 .btn-primary {
@@ -386,10 +393,10 @@ body.dental-site {
 
 @keyframes pulse-shadow {
     0%, 100% {
-        box-shadow: 0 10px 30px rgba(249, 115, 22, 0.35);
+        box-shadow: 0 10px 30px rgba(194, 65, 12, 0.35);
     }
     50% {
-        box-shadow: 0 10px 30px rgba(249, 115, 22, 0.65), 0 0 0 8px rgba(249, 115, 22, 0.15);
+        box-shadow: 0 10px 30px rgba(194, 65, 12, 0.65), 0 0 0 8px rgba(194, 65, 12, 0.15);
     }
 }
 
@@ -444,7 +451,7 @@ body.dental-site {
    Hero
    ========================================= */
 .hero {
-    background: linear-gradient(135deg, var(--c-primary-light) 0%, #f0fdfa 100%);
+    background: linear-gradient(135deg, var(--c-primary-light) 0%, #fdf6ec 100%);
     padding: 5rem 0 6rem 0;
     position: relative;
     overflow: hidden;
@@ -457,7 +464,7 @@ body.dental-site {
     right: -100px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(20, 184, 166, 0.15), transparent);
+    background: radial-gradient(circle, rgba(202, 138, 4, 0.15), transparent);
     border-radius: 50%;
 }
 
@@ -516,7 +523,7 @@ body.dental-site {
     right: 0;
     bottom: 4px;
     height: 10px;
-    background: rgba(20, 184, 166, 0.25);
+    background: rgba(202, 138, 4, 0.25);
     z-index: -1;
     border-radius: 3px;
 }
@@ -572,7 +579,6 @@ body.dental-site {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-accent) 100%);
-    /* Soft rounded corners — the clean, clinical, premium feel */
     border-radius: 32px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
@@ -585,14 +591,14 @@ body.dental-site {
     display: block;
 }
 
-/* Cool teal wash — keeps the medical-blue brand tint and card legibility */
+/* Warm terracotta wash over the photo — keeps the brand tint and text legibility */
 .hero-visual-main::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     background:
-        linear-gradient(155deg, rgba(3, 105, 161, 0.30) 0%, rgba(20, 184, 166, 0.10) 45%, rgba(15, 23, 42, 0.28) 100%);
+        linear-gradient(160deg, rgba(154, 52, 18, 0.28) 0%, rgba(0, 0, 0, 0.05) 45%, rgba(41, 34, 25, 0.35) 100%);
     pointer-events: none;
 }
 
@@ -632,7 +638,7 @@ body.dental-site {
 }
 
 .hero-float-icon.accent {
-    background: rgba(20, 184, 166, 0.15);
+    background: rgba(202, 138, 4, 0.15);
     color: var(--c-accent);
 }
 
@@ -779,7 +785,7 @@ body.dental-site {
 }
 
 .about-visual {
-    background: linear-gradient(135deg, var(--c-primary-light), #ecfeff);
+    background: linear-gradient(135deg, var(--c-primary-light), #fdf6ec);
     border-radius: var(--radius-lg);
     aspect-ratio: 1;
     display: flex;
@@ -797,7 +803,7 @@ body.dental-site {
 }
 
 .about-visual::after {
-    content: "Studio moderno";
+    content: "Dal 1987";
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -879,9 +885,9 @@ body.dental-site {
     letter-spacing: -0.02em;
 }
 
-.team-avatar.v2 { background: linear-gradient(135deg, #6366f1, var(--c-primary)); }
-.team-avatar.v3 { background: linear-gradient(135deg, var(--c-accent), #10b981); }
-.team-avatar.v4 { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+.team-avatar.v2 { background: linear-gradient(135deg, #b45309, #7c2d12); }
+.team-avatar.v3 { background: linear-gradient(135deg, #ca8a04, #4d7c0f); }
+.team-avatar.v4 { background: linear-gradient(135deg, #a16207, #9a3412); }
 
 .team-info {
     padding: 1.5rem;
@@ -1215,7 +1221,7 @@ body.dental-site {
 
 /* Map placeholder */
 .map-placeholder {
-    background: linear-gradient(135deg, #dbeafe, #ecfeff);
+    background: linear-gradient(135deg, #fbe3c8, #fdf6ec);
     border-radius: var(--radius-lg);
     aspect-ratio: 4/3;
     display: flex;
@@ -1235,8 +1241,8 @@ body.dental-site {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(3, 105, 161, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(3, 105, 161, 0.06) 1px, transparent 1px);
+        linear-gradient(rgba(154, 52, 18, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(154, 52, 18, 0.06) 1px, transparent 1px);
     background-size: 40px 40px;
 }
 
@@ -1312,7 +1318,7 @@ body.dental-site {
 .form-textarea:focus {
     outline: none;
     border-color: var(--c-primary);
-    box-shadow: 0 0 0 4px rgba(3, 105, 161, 0.12);
+    box-shadow: 0 0 0 4px rgba(154, 52, 18, 0.12);
 }
 
 .form-textarea { min-height: 100px; resize: vertical; }
@@ -1336,7 +1342,7 @@ body.dental-site {
    ========================================= */
 .call-banner {
     background:
-        linear-gradient(135deg, rgba(3, 105, 161, 0.95), rgba(13, 148, 136, 0.95)),
+        linear-gradient(135deg, rgba(154, 52, 18, 0.95), rgba(161, 98, 7, 0.95)),
         radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1), transparent 40%);
     color: #fff;
     padding: 4rem 0;
@@ -1483,7 +1489,7 @@ body.dental-site {
    Footer
    ========================================= */
 .dental-footer {
-    background: #0f172a;
+    background: #292219;
     color: rgba(255, 255, 255, 0.75);
     padding: 4rem 0 0 0;
 }
@@ -1656,7 +1662,7 @@ body.dental-site {
     border: 1px solid var(--c-border);
     border-radius: 18px;
     padding: 1rem 1.15rem 1rem 1rem;
-    box-shadow: 0 20px 50px rgba(3, 105, 161, 0.25);
+    box-shadow: 0 20px 50px rgba(154, 52, 18, 0.25);
     max-width: 300px;
     z-index: 75;
     display: flex;
@@ -1692,7 +1698,7 @@ body.dental-site {
     justify-content: center;
     font-size: 1.1rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+    box-shadow: 0 4px 12px rgba(154, 52, 18, 0.3);
     position: relative;
 }
 
@@ -1759,7 +1765,7 @@ body.dental-site {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: linear-gradient(135deg, rgba(3, 105, 161, 0.08), rgba(20, 184, 166, 0.08));
+    background: linear-gradient(135deg, rgba(154, 52, 18, 0.08), rgba(202, 138, 4, 0.08));
     border: 1.5px dashed var(--c-primary);
     color: var(--c-primary);
     padding: 0.75rem 1.1rem;
@@ -1773,7 +1779,7 @@ body.dental-site {
 }
 
 .hero-ai-cta:hover {
-    background: linear-gradient(135deg, rgba(3, 105, 161, 0.15), rgba(20, 184, 166, 0.15));
+    background: linear-gradient(135deg, rgba(154, 52, 18, 0.15), rgba(202, 138, 4, 0.15));
     color: var(--c-primary-dark);
     transform: translateX(4px);
 }
@@ -1801,7 +1807,7 @@ body.dental-site {
    AI mid-banner (between listino and testimonianze)
    ========================================= */
 .ai-midbanner {
-    background: linear-gradient(135deg, #075985 0%, #0d9488 100%);
+    background: linear-gradient(135deg, #7c2d12 0%, #a16207 100%);
     color: #fff;
     padding: 3rem 0;
     position: relative;
@@ -1849,7 +1855,7 @@ body.dental-site {
     width: 22px;
     height: 22px;
     background: var(--c-success);
-    border: 3px solid #075985;
+    border: 3px solid #7c2d12;
     border-radius: 50%;
     animation: dot-pulse 2s infinite;
 }
@@ -1935,7 +1941,7 @@ body.dental-site {
     inset: 0;
     background:
         radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.3), transparent 45%);
+        radial-gradient(circle at 80% 80%, rgba(202, 138, 4, 0.3), transparent 45%);
 }
 
 .ai-explain-visual-head {
@@ -2016,8 +2022,8 @@ body.dental-site {
 }
 
 .chat-bubble.bot {
-    background: rgba(20, 184, 166, 0.25);
-    border: 1px solid rgba(20, 184, 166, 0.4);
+    background: rgba(202, 138, 4, 0.25);
+    border: 1px solid rgba(202, 138, 4, 0.4);
     color: #fff;
     border-bottom-left-radius: 4px;
     backdrop-filter: blur(6px);
@@ -2066,7 +2072,7 @@ body.dental-site {
 
 .ai-features-list i {
     color: var(--c-accent);
-    background: rgba(20, 184, 166, 0.12);
+    background: rgba(202, 138, 4, 0.12);
     width: 28px;
     height: 28px;
     border-radius: 8px;
@@ -2171,6 +2177,7 @@ body.dental-site {
 
     .hero h1 { font-size: 2.25rem; }
     .hero-visual { height: 320px; }
+    .hero-visual-main i { font-size: 9rem; }
     .section-title { font-size: 1.75rem; }
     .section { padding: 3.5rem 0; }
 
@@ -2265,29 +2272,30 @@ body.dental-site {
 }
 
 /* =========================================
-   Gallery struttura (dental-only section)
+   Gallery piatti (restaurant-only section)
    ========================================= */
 .gallery-section {
-    background: var(--c-bg-blue);
+    background:
+        linear-gradient(180deg, var(--c-bg) 0%, var(--c-bg-soft) 100%);
 }
 
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 200px;
-    gap: 1.25rem;
+    gap: 1rem;
     margin-top: 3rem;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    /* Soft, rounded, premium-clinic corners */
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
     margin: 0;
 }
 
+/* First item spans a 2x2 block to break the uniform grid */
 .gallery-item-lg {
     grid-column: span 2;
     grid-row: span 2;
@@ -2302,7 +2310,7 @@ body.dental-site {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.07);
 }
 
 .gallery-item figcaption {
@@ -2312,10 +2320,10 @@ body.dental-site {
     bottom: 0;
     padding: 1.5rem 1.25rem 1rem;
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(0deg, rgba(15, 23, 42, 0.8) 0%, transparent 100%);
+    background: linear-gradient(0deg, rgba(41, 34, 25, 0.85) 0%, transparent 100%);
     transform: translateY(0.5rem);
     opacity: 0;
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -2327,13 +2335,13 @@ body.dental-site {
     transform: translateY(0);
 }
 
-/* Teal ring on hover — the clean clinical accent */
+/* Gold hairline accent — the "elegant restaurant" cue */
 .gallery-item::after {
     content: "";
     position: absolute;
     inset: 0;
-    border: 3px solid transparent;
-    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    border-radius: var(--radius);
     transition: border-color 0.35s ease;
     pointer-events: none;
 }
@@ -2348,7 +2356,7 @@ body.dental-site {
         grid-auto-rows: 160px;
     }
     .gallery-item-lg { grid-column: span 2; grid-row: span 2; }
-    .gallery-item figcaption { opacity: 1; transform: translateY(0); }
+    .gallery-item figcaption { opacity: 1; transform: translateY(0); font-size: 1rem; }
 }
 
 @media (max-width: 480px) {

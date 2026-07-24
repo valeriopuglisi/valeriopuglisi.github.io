@@ -114,6 +114,17 @@
             'team.ferrara.role': 'Pedodonzia',
             'team.ferrara.spec': 'Odontoiatria infantile con approccio ludico e prevenzione precoce.',
 
+            /* Gallery */
+            'gallery.eyebrow': 'La nostra struttura',
+            'gallery.title': 'Uno studio pensato per il tuo comfort',
+            'gallery.lead': 'Ambienti moderni, sterilizzazione certificata e tecnologie di ultima generazione: tutto per rendere ogni visita serena e sicura.',
+            'gallery.1.cap': 'Sala operativa',
+            'gallery.2.cap': 'Tecnologia digitale',
+            'gallery.3.cap': 'Accoglienza',
+            'gallery.4.cap': 'Diagnostica 3D',
+            'gallery.5.cap': 'Igiene e sterilizzazione',
+            'gallery.6.cap': 'Il tuo sorriso',
+
             /* Listino */
             'pricing.eyebrow': 'Listino prestazioni',
             'pricing.title': 'Trasparenza sui costi',
@@ -387,6 +398,17 @@
             'team.costa.spec': 'Root canal treatments with surgical microscope and complex retreatments.',
             'team.ferrara.role': 'Pediatric Dentistry',
             'team.ferrara.spec': 'Child dentistry with a playful approach and early prevention.',
+
+            /* Gallery */
+            'gallery.eyebrow': 'Our practice',
+            'gallery.title': 'A clinic designed for your comfort',
+            'gallery.lead': 'Modern spaces, certified sterilisation and state-of-the-art technology: everything to make every visit calm and safe.',
+            'gallery.1.cap': 'Treatment room',
+            'gallery.2.cap': 'Digital technology',
+            'gallery.3.cap': 'Reception',
+            'gallery.4.cap': '3D diagnostics',
+            'gallery.5.cap': 'Hygiene & sterilisation',
+            'gallery.6.cap': 'Your smile',
 
             /* Listino */
             'pricing.eyebrow': 'Price list',
